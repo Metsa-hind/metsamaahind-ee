@@ -1,4 +1,4 @@
-﻿import { Section } from "@/components/primitives/Section";
+import { Section } from "@/components/primitives/Section";
 import { Container } from "@/components/primitives/Container";
 import { Prose } from "@/components/primitives/Prose";
 import { getPageBySlug } from "@/lib/mdx";
