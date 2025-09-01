@@ -1,0 +1,51 @@
+﻿# .cursorrules
+
+ROLE
+- You ONLY edit files. Do not install packages, run dev servers, or execute shell commands unless explicitly asked. If a command is needed, write a one-line note: "User: run -> pnpm <command>".
+- Build exactly what Johannes requests, one section at a time. Do not scaffold full pages unless asked.
+
+LAYOUT TOKENS (NON-NEGOTIABLE)
+- Wrap every visual block in <Section> with vertical rhythm:
+  - mobile: 64px top/bottom, tablet: 96px, desktop: 128px.
+- Content sits in <Container> with max-w 1200px; side padding: 24px (mobile) / 32px (tablet) / 40px (desktop).
+- Use <Stack gap="xs|sm|md|lg|xl"> for sibling spacing. RAW margins (mt-/mb- or style marginTop/marginBottom) are forbidden inside a Section.
+- Baseline grid: 4px. Spacing scale: 4, 8, 12, 16, 24, 32, 40, 48, 64, 80, 96, 128.
+
+TYPOGRAPHY
+- Use <H1|H2|H3|Lead|P> primitives. All margins removed; spacing comes from Stack.
+- Type scale with clamp(); line-height headings 1.15–1.2, body 1.6–1.75.
+
+SCREENSHOT / FIGMA REPLICATION PROTOCOL
+1) Establish scale: infer CSS px by measuring a known primitive (e.g., 16px body or 24px icon) → compute scale factor S.
+2) Grid harmonization: snap all measured spacings to nearest token within ±2px tolerance.
+   - If outside tolerance, create ONE named token (e.g., --space-36=144px) and document in /docs/design-system.md (“why” + where used). Do NOT freehand.
+3) Type mapping: map heading/body to tokens; if off by >1px at common breakpoints, create a named type token and document.
+4) Box model: compute padding, gap, radius, icon sizes, image aspect (prefer 16/9 or 4/3).
+5) Desktop first EXACT, then mobile: collapse grids appropriately; preserve hierarchy; do not change desktop spacing.
+6) Motion LAST: add Framer Motion entry transitions AFTER layout; no CLS; respect prefers-reduced-motion.
+7) Output a mini spec table in your message: MEASURE → TOKEN → DELTA(px).
+
+MOBILE AUTONOMY
+- Always deliver mobile (≤640px) with: 1-col grids, no horizontal overflow at 320px, tap targets ≥44px, readable line length 45–75 chars.
+- If no mobile comp is provided, propose a mobile variant consistent with tokens; do not invent new patterns.
+
+SEO & ACCESSIBILITY
+- Exactly one H1 per page; H2/H3 logical hierarchy.
+- Use next/image with correct sizes; eager only for above-the-fold hero.
+- Focus-visible states; contrast ≥ 4.5:1.
+- When FAQs/Reviews/Org info are present, add JSON-LD via helpers. Never block render if data is missing.
+
+ABSOLUTE URLS
+- All CTAs/links must be absolute (https://domain/slug). Use absUrl() helper from /lib/routes and NEXT_PUBLIC_BASE_URL.
+- If a slug is unknown, use absUrl("placeholder") and leave a TODO.
+
+ANTI-FREEZE
+- Do not run installs or dev tasks. If Contentlayer types are missing, render a stub and proceed (note for the user to run "pnpm dev" to generate types).
+
+QA CHECKLIST (POST EACH BLOCK)
+- Tokens respected (Section/Container/Stack; no raw margins).
+- Desktop exact; mobile done; no overflow at 320px.
+- Motion added post-layout; no CLS; reduced-motion safe.
+- H2/H3 structure inside block is logical.
+- next/image sizing present (if images exist).
+- Post the MEASURE→TOKEN→DELTA table.

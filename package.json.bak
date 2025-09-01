@@ -1,0 +1,42 @@
+﻿{
+    "name":  "seo-site",
+    "version":  "0.1.0",
+    "private":  true,
+    "type":  "module",
+    "scripts":  {
+                    "dev":  "next dev",
+                    "build":  "contentlayer build \u0026\u0026 next build",
+                    "start":  "next start",
+                    "typecheck":  "tsc --noEmit",
+                    "sitemap":  "next-sitemap",
+                    "new:service":  "tsx scripts/new-service.ts",
+                    "finalize:links":  "tsx scripts/finalize-links.ts",
+                    "lint:spacing":  "node scripts/lint-spacing.cjs"
+                },
+    "dependencies":  {
+                         "next":  "^15.5.0",
+                         "react":  "^18.3.1",
+                         "react-dom":  "^18.3.1",
+                         "framer-motion":  "^11.0.0",
+                         "@tailwindcss/typography":  "^0.5.10",
+                         "contentlayer":  "^0.3.4",
+                         "next-contentlayer":  "^0.3.4",
+                         "next-seo":  "^6.4.0",
+                         "next-sitemap":  "^4.3.3",
+                         "lucide-react":  "^0.468.0"
+                     },
+    "devDependencies":  {
+                            "typescript":  "^5.5.0",
+                            "@types/node":  "^20.14.0",
+                            "@types/react":  "^18.3.0",
+                            "@types/react-dom":  "^18.3.0",
+                            "autoprefixer":  "^10.4.20",
+                            "postcss":  "^8.4.35",
+                            "tailwindcss":  "^3.4.10",
+                            "tailwindcss-animate":  "^1.0.7",
+                            "class-variance-authority":  "^0.7.0",
+                            "clsx":  "^2.1.1",
+                            "tsx":  "^4.7.0",
+                            "eslint":  "^9.4.0"
+                        }
+}
