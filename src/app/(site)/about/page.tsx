@@ -1,27 +1,22 @@
-﻿import { notFound } from "next/navigation";
-import { SEO } from "@/components/seo/SEO";
-import { Section } from "@/components/primitives/Section";
+﻿import { Section } from "@/components/primitives/Section";
 import { Container } from "@/components/primitives/Container";
 import { Prose } from "@/components/primitives/Prose";
-import { getPageBySlug, mdxOptions } from "@/lib/mdx";
-import { MDXRemote } from "next-mdx-remote/rsc";
+import { getPageBySlug } from "@/lib/mdx";
 
 export default function AboutPage() {
-  const { data, content } = getPageBySlug("about");
-  if (!data?.title) return notFound();
+  const content = getPageBySlug("about");
+  const title = "Meist";
   return (
     <>
-      <SEO />
       <Section>
         <Container>
-          <h1 className="text-h1 font-semibold">{data.title}</h1>
-          {data.description && <p className="text-body mt-4">{data.description}</p>}
+          <h1 className="text-3xl font-semibold">{title}</h1>
         </Container>
       </Section>
       <Section size="md">
         <Container>
           <Prose>
-            <MDXRemote source={content} options={mdxOptions} />
+            <pre>{content.slice(0, 600)}…</pre>
           </Prose>
         </Container>
       </Section>

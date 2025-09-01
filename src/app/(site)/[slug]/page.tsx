@@ -1,5 +1,5 @@
 ﻿// app/(site)/[slug]/page.tsx
-import { getPageBySlug } from "@/src/lib/mdx";
+import { getPageBySlug } from "@/lib/mdx";
 // If you render MDX, you’ll later feed the returned string to your MDX renderer.
 
 export default async function Page({ params }: { params: { slug: string } }) {
