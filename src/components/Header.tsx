@@ -1,8 +1,9 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import { useState } from "react";
-import { ChevronDown, Mail, TreePine, Settings, Info, FileText, Calculator, ShoppingCart, Tractor, Axe } from "lucide-react";
+import { ChevronDown, Mail, Settings, FileText, Calculator, ShoppingCart, Tractor, Axe } from "lucide-react";
 import { Container } from "@/components/primitives/Container";
 import { Button } from "@/components/ui/button";
 
@@ -36,19 +37,21 @@ export function Header() {
       <Container className="py-4 pl-4 lg:pl-6">
         <div className="flex items-center justify-between">
           {/* Logo Section */}
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-[10px]">
             {/* Logo Placeholder */}
             <motion.div
               className="flex items-center gap-3 cursor-pointer"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <div className="w-10 h-10 bg-gradient-to-br from-emerald-600 to-emerald-800 rounded-lg flex items-center justify-center shadow-lg">
-                <TreePine className="w-6 h-6 text-white" />
-              </div>
-              <div className="font-adcreative font-bold text-xl text-emerald-900">
-                MetsaPartner
-              </div>
+              <Image
+                src="/metsa-hind-ikoon.png"
+                alt="MetsaPartner logo"
+                width={48}
+                height={48}
+                className="h-[48px] w-[48px] object-contain bg-transparent"
+                priority
+              />
             </motion.div>
 
             {/* Navigation */}

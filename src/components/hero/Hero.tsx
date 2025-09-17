@@ -9,24 +9,22 @@ export default function Hero() {
   return (
     <section className="relative isolate overflow-hidden">
       <div className="mx-auto w-full max-w-[1200px] px-4 pt-24 sm:pt-28 min-h-[calc(100vh-80px)]">
-        <div className="grid items-center gap-10 md:grid-cols-2 md:gap-14 md:[grid-template-columns:1.15fr_0.85fr] h-full">
+        <div className="mt-[25px] grid items-center gap-10 md:grid-cols-2 md:gap-14 md:[grid-template-columns:1.15fr_0.85fr] h-full">
           {/* Left copy */}
           <div className="text-emerald-950/95">
             <h1 className="mt-4 font-adcreative text-4xl leading-[1.1] sm:text-5xl md:text-6xl text-emerald-950">
               Saa teada oma <span className="text-emerald-700">metsa hind</span>
             </h1>
 
-            <p className="mt-5 max-w-xl text-base/7 text-emerald-900/80 sm:text-lg/8">
-              Saada taotluse ning anname esialgse hinnangu <strong>24 tunni</strong> jooksul.
-              Õiglane turuanalüüs, ekspertide nõustamine ja usaldusväärne teenindus üle Eesti.
+            <p className="mt-[21px] text-lg font-normal text-emerald-800 sm:text-xl">
+              Soovite teada Saada oma metsakinnistu täpset hinda? Saatke meile oma kinnistu andmed ning meie spetsialist <strong className="italic">hindab teie kinnistu</strong>.
             </p>
 
-            <ul className="mt-6 grid max-w-lg grid-cols-1 gap-3 text-sm text-emerald-900/80 sm:grid-cols-2">
+            <ul className="mt-[29px] pt-[10px] grid max-w-lg grid-cols-1 gap-3 text-sm text-emerald-900/80">
               {[
-                "Vastus 24h jooksul",
+                "Kiire vastus",
                 "15+ aastat kogemust",
-                "Professionaalne meeskond",
-                "Keskkonnahoidlik lähenemine",
+                "Korrektne asjaajamine",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2">
                   <svg className="mt-[2px] h-5 w-5 text-emerald-300" viewBox="0 0 24 24" fill="currentColor">
@@ -37,33 +35,52 @@ export default function Hero() {
               ))}
             </ul>
 
-            <p className="mt-6 inline-flex items-center gap-2 rounded-full bg-emerald-900/5 px-3 py-1 text-xs font-medium">
-              <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-600" />
-              Saadame vastuse 24 tunni jooksul
+            <p className="mt-[37px] text-[16px] font-medium text-black">
+              Tutvuge lähemalt
             </p>
 
-            <div className="mt-8 flex items-center gap-3">
+            <div className="mt-3 flex items-center gap-3">
               <a
                 href="#metsa-hinnad"
-                className="inline-flex h-11 items-center rounded-lg border border-emerald-300/60 px-4 text-sm font-semibold text-emerald-900 hover:bg-emerald-900/5"
+                className="group inline-flex h-11 items-center rounded-lg bg-gradient-to-r from-emerald-50 to-emerald-100 border border-emerald-200/60 px-4 text-sm font-semibold text-emerald-900 hover:from-emerald-100 hover:to-emerald-150 transition-all duration-200"
               >
-                Vaata näidishindu
+                Hinnastatistika
+                <svg className="ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
               </a>
               <a
                 href="#form"
-                className="inline-flex h-11 items-center rounded-lg bg-emerald-600 px-5 text-sm font-semibold text-white hover:bg-emerald-700"
+                className="group inline-flex h-11 items-center rounded-lg bg-emerald-600 px-5 text-sm font-semibold text-white hover:bg-emerald-700 transition-all duration-200"
               >
-                Küsi hinnangut
+                Näidiskalkulaator
+                <svg className="ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
               </a>
             </div>
+
+            <p className="mt-3 text-[14px] text-emerald-700/70">
+              *Kinnistu täpse hinna saamiseks saatke päring
+            </p>
           </div>
 
           {/* Right form */}
-          <div id="form" className="w-full self-stretch md:self-center md:my-[20px]">
+          <div id="form" className="w-full self-stretch md:self-center md:my-[20px] mt-[20px]">
             <form
               aria-labelledby={`${formId}-title`}
-              className="rounded-2xl bg-white/95 p-5 shadow-[0_8px_30px_rgba(0,0,0,0.12)] backdrop-blur sm:p-6 transition-transform duration-300 hover:scale-[1.02]"
+              className="relative overflow-hidden rounded-2xl bg-white/95 p-5 shadow-[0_8px_30px_rgba(0,0,0,0.25)] backdrop-blur sm:p-6 transition-transform duration-300 hover:scale-[1.02]"
             >
+              <div className="pointer-events-none absolute inset-0 -z-10">
+                <Image
+                  src="/metsamaa-hind-taust-kontaktivorm.png"
+                  alt=""
+                  fill
+                  sizes="(min-width: 1024px) 520px, (min-width: 640px) 560px, 100vw"
+                  quality={60}
+                  className="object-cover"
+                />
+              </div>
               <h2 id={`${formId}-title`} className="font-adcreative text-xl text-emerald-900">
                 Arvuta metsa hind
               </h2>

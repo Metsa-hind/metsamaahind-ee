@@ -1,0 +1,14 @@
+*** Begin Patch ***
+*** Update File: src/components/hero/Hero.tsx
+@@
+           {/* Left copy */}
+           <div className="text-emerald-950/95">
+             <h1 className="mt-4 font-adcreative text-4xl leading-[1.1] sm:text-5xl md:text-6xl text-emerald-950">
+-              Saa teada oma <span className="text-emerald-700">metsa hind</span>
++              Saa teada oma <span className="text-emerald-700">metsa hind</span> random line
+             </h1>
+ 
+             <p className="mt-[21px] text-lg font-normal text-emerald-800 sm:text-xl">
+               Soovite teada Saada oma metsakinnistu täpset hinda? Saatke meile oma kinnistu andmed ning meie spetsialist <strong className="italic">hindab teie kinnistu</strong>.
+             </p>
+*** End Patch ***

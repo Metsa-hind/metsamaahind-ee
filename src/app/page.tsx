@@ -8,16 +8,27 @@ import FAQSection from "@/components/sections/FAQSection";
 import FinalContactSection from "@/components/sections/FinalContactSection";
 import TallServicesCarousel from "@/components/sections/TallServicesCarousel";
 import CTABand from "@/components/sections/cta/CTABand";
-import IntroFunnelSection from "@/components/sections/IntroFunnelSection";
 import ReviewsSection from "@/components/sections/ReviewsSection";
+import ProcessStepsSection from "@/components/sections/ProcessStepsSection";
+import PriceDriversSection from "@/components/sections/PriceDriversSection";
+import AveragePricesSection from "@/components/sections/AveragePricesSection";
+import CompanyInfoSection from "@/app/components/sections/CompanyInfoSection";
+import UploadCard from "@/components/sections-special/UploadCard";
 
 export default function Page() {
   return (
     <>
       <Hero />
-      <IntroFunnelSection />
+      <ProcessStepsSection />
+      {/* Company info after steps */}
+      <div className="my-[60px]">
+        <CompanyInfoSection />
+      </div>
       <MarketAveragesSection />
       <SpeciesPricesSection />
+      <AveragePricesSection />
+      <PriceDriversSection />
+      <UploadCard />
       <ValuationBreakdownSection />
       <ParallaxFeatureSection />
       <SeoReadSection />
