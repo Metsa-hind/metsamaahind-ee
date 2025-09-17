@@ -3,7 +3,7 @@
 import Section from "@/components/primitives/Section";
 import { Container } from "@/components/primitives/Container";
 import { useMemo, useState } from "react";
-import { YEAR_LABELS, YearRange, getYearList, sortCounties, type SortKey, HIGHEST_HA_PRICE, PRICE_DATA } from "@/data/averagePrices";
+import { YEAR_LABELS, YearRange, getYearList, sortCounties, type SortKey, HIGHEST_HA_PRICE, PRICE_DATA, type CountyKey } from "@/data/averagePrices";
 import GrowthRingsRadial from "@/components/visuals/GrowthRingsRadial";
 import MetricPill from "@/components/ui/MetricPill";
 import { BarChart2, TrendingUp, Maximize2 } from "lucide-react";
@@ -71,7 +71,7 @@ export default function AveragePricesSection() {
                 <h3 className="text-[1.4rem] font-bold text-emerald-900">{c.county}</h3>
                 {typeof c.yoyMedianDeltaPct === "number" && (() => {
                   const otherYear: YearRange = year === "2023-2024" ? "2024-2025" : "2023-2024";
-                  const prev = PRICE_DATA[otherYear][c.county as any]?.medianPricePerHa ?? 0;
+                  const prev = PRICE_DATA[otherYear][c.county as CountyKey]?.medianPricePerHa ?? 0;
                   const curr = c.medianPricePerHa;
                   const sign = c.yoyMedianDeltaPct >= 0 ? "+" : "";
                   const [start, end] = year.split("-");
@@ -98,7 +98,7 @@ export default function AveragePricesSection() {
                 <GrowthRingsRadial
                   diameter={220}
                   median={c.medianPricePerHa}
-                  max={HIGHEST_HA_PRICE[year]?.[c.county as any] ?? 0}
+                  max={HIGHEST_HA_PRICE[year]?.[c.county as CountyKey] ?? 0}
                   maxDomainMedian={8000}
                   maxDomainMax={35000}
                   deals={c.dealsCount}
@@ -108,8 +108,8 @@ export default function AveragePricesSection() {
                 <MetricPill label="Tehinguid" value={c.dealsCount} Icon={BarChart2} />
                 <MetricPill
                   label={year === "2024-2025" ? "Kõrgeim hektari hind" : "Kõrgeim €/ha"}
-                  value={HIGHEST_HA_PRICE[year]?.[c.county as any] ?? "–"}
-                  suffix={typeof HIGHEST_HA_PRICE[year]?.[c.county as any] === "number" ? " €/ha" : undefined}
+                  value={HIGHEST_HA_PRICE[year]?.[c.county as CountyKey] ?? "–"}
+                  suffix={typeof HIGHEST_HA_PRICE[year]?.[c.county as CountyKey] === "number" ? " €/ha" : undefined}
                   Icon={TrendingUp}
                 />
                 <MetricPill label="Mediaan" value={c.medianPricePerHa} suffix=" €/ha" Icon={TrendingUp} />
