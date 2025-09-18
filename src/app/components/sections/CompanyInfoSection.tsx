@@ -90,17 +90,17 @@ export default function CompanyInfoSection() {
               <div className="mt-4 rounded-xl border border-emerald-900/10 bg-white/85 p-4 shadow-sm md:p-5">
                 <div className="flex flex-col items-start gap-3 md:flex-row md:items-center md:justify-between">
                   <div className="flex items-center gap-3">
-                    <Building2 className="h-5 w-5 text-emerald-700" aria-hidden />
-                    <h3 className="text-[15px] font-semibold leading-tight text-emerald-950">Meie lähenemine</h3>
+                    <Image src="/metsa-hind-ikoon.png" alt="Metsa Hind logo" width={24} height={24} className="h-6 w-6 object-contain" />
+                    <h3 className="text-[15px] font-semibold leading-tight text-emerald-950">Meie standard</h3>
                   </div>
                   <p className="max-w-[70ch] text-[13px] leading-6 text-emerald-900/85">
-                    Töötab üks vastutav kontaktisik, selge ajakava ja korrektne dokumentatsioon. Meie eesmärk on tagada rahulik ja professionaalne kogemus – alates esmasest nõustamisest kuni notarini.
+                    Pühendume töödele, mille tulemuse üle saame tõesti uhked olla. Meie mõõdupuu on kvaliteet ja korrektsus igas etapis – ilma liigse mürata.
                   </p>
                 </div>
                 <ul className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-3">
-                  <li className="flex items-start gap-2 text-[13px] text-emerald-900/90"><CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-700" aria-hidden /> Pühendunud kontaktisik</li>
-                  <li className="flex items-start gap-2 text-[13px] text-emerald-900/90"><CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-700" aria-hidden /> Selge ajakava ja sammud</li>
-                  <li className="flex items-start gap-2 text-[13px] text-emerald-900/90"><CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-700" aria-hidden /> Dokumendid korras ja läbipaistev suhtlus</li>
+                  <li className="flex items-start gap-2 text-[13px] text-emerald-900/90"><CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-700" aria-hidden /> Tugev tööeetika ja selged kokkulepped</li>
+                  <li className="flex items-start gap-2 text-[13px] text-emerald-900/90"><CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-700" aria-hidden /> Täpne hindamine ja korrektne menetlus</li>
+                  <li className="flex items-start gap-2 text-[13px] text-emerald-900/90"><CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-700" aria-hidden /> Rahulik kogemus, keskendudes tulemusele</li>
                 </ul>
               </div>
             </div>
