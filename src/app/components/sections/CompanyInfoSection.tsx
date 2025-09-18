@@ -29,78 +29,61 @@ export default function CompanyInfoSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.3 }}
-          className="mx-auto mb-6 w-full max-w-[1200px] overflow-hidden rounded-2xl border border-emerald-900/10 bg-white/80 shadow-[0_10px_30px_rgba(0,0,0,0.06)] ring-1 ring-emerald-900/5 backdrop-blur-sm"
+          className="mx-auto mb-6 w-full max-w-[1200px] overflow-hidden rounded-2xl border border-emerald-900/10 bg-white/85 shadow-[0_10px_30px_rgba(0,0,0,0.06)] ring-1 ring-emerald-900/5 backdrop-blur-sm"
         >
-          <div className="relative grid grid-cols-1 gap-6 p-6 md:grid-cols-12 md:items-center">
-            {/* Background gradient + subtle vectors */}
-            <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(100%_120%_at_0%_0%,rgba(16,185,129,0.10),transparent_60%),radial-gradient(120%_100%_at_100%_100%,rgba(16,185,129,0.08),transparent_55%)]" />
+          {/* Elevated background, subtle gradient only */}
+          <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(120%_120%_at_0%_0%,rgba(16,185,129,0.08),transparent_55%)]" />
 
-            {/* Left: Headline + subhead (5 cols) */}
+          {/* Two-zone layout: Left content, Right horizontal tiles */}
+          <div className="relative grid min-h-[324px] grid-cols-1 gap-8 p-6 md:min-h-[340px] md:grid-cols-12 md:p-8">
+            {/* Left: Headline, refined copy, bullets */}
             <div className="md:col-span-5">
               <h2 className="text-2xl font-semibold tracking-tight text-emerald-950 sm:text-3xl">Jätkusuutlik metsamajandus</h2>
-              <p className="mt-3 max-w-[56ch] text-[15px] leading-7 text-emerald-900/90">
-                Oleme sõltumatu metsaostu- ja haldusettevõte, kes ühendab vastutustundliku majandamise, ausa hinnastamise ja kiire teostuse. Aitame kinnistul tuua pikaajalist tulu ning hoida metsad elujõulised ka homme.
-              </p>
-            </div>
-
-            {/* Middle: Value pills (4 cols) */}
-            <div className="md:col-span-4">
-              <ul className="grid grid-cols-1 gap-3 sm:grid-cols-3 md:grid-cols-1">
-                <li className="flex items-start gap-3 rounded-xl border border-emerald-900/10 bg-white/70 p-3 shadow-sm">
-                  <Leaf className="mt-0.5 h-5 w-5 text-emerald-700" aria-hidden />
-                  <div>
-                    <p className="text-[15px] font-medium text-emerald-950">Kõrgeim metsamaa hind</p>
-                    <p className="text-[13px] text-emerald-900/80">Läbipaistev pakkumine ja konkurentsipõhine hindamine.</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3 rounded-xl border border-emerald-900/10 bg-white/70 p-3 shadow-sm">
-                  <Timer className="mt-0.5 h-5 w-5 text-emerald-700" aria-hidden />
-                  <div>
-                    <p className="text-[15px] font-medium text-emerald-950">Kiire protsess</p>
-                    <p className="text-[13px] text-emerald-900/80">Pakkumine 24 h, notarini 1–2 nädalaga.</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3 rounded-xl border border-emerald-900/10 bg-white/70 p-3 shadow-sm">
-                  <ShieldCheck className="mt-0.5 h-5 w-5 text-emerald-700" aria-hidden />
-                  <div>
-                    <p className="text-[15px] font-medium text-emerald-950">Usaldusväärsus</p>
-                    <p className="text-[13px] text-emerald-900/80">10+ aastat kogemust, 4000+ edukat tehingut.</p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-
-            {/* Right: KPIs + CTA (3 cols) */}
-            <div className="md:col-span-3">
-              <div className="grid grid-cols-2 gap-3">
-                <div className="rounded-xl border border-emerald-900/10 bg-white/70 p-3 text-center shadow-sm">
-                  <p className="text-xl font-semibold text-emerald-950">10+</p>
-                  <p className="text-[12px] text-emerald-900/80">aastat turul</p>
-                </div>
-                <div className="rounded-xl border border-emerald-900/10 bg-white/70 p-3 text-center shadow-sm">
-                  <p className="text-xl font-semibold text-emerald-950">4000+</p>
-                  <p className="text-[12px] text-emerald-900/80">edukat tehingut</p>
-                </div>
-                <div className="rounded-xl border border-emerald-900/10 bg-white/70 p-3 text-center shadow-sm">
-                  <p className="text-xl font-semibold text-emerald-950">24 h</p>
-                  <p className="text-[12px] text-emerald-900/80">esmane pakkumine</p>
-                </div>
-                <div className="rounded-xl border border-emerald-900/10 bg-white/70 p-3 text-center shadow-sm">
-                  <p className="text-xl font-semibold text-emerald-950">5000+</p>
-                  <p className="text-[12px] text-emerald-900/80">rahulolevat klienti</p>
-                </div>
+              <div className="mt-3 max-w-[60ch] text-[15px] leading-7 text-emerald-900/90">
+                <p>
+                  Meie fookus on pikaajalisel metsa tervisel ja maaomaniku huvil. Hindame õiglaselt, teostame kiiresti ning hoiame suhtluse selge ja professionaalse.
+                </p>
               </div>
-              <div className="mt-3 flex items-center gap-3">
+              <ul className="mt-4 grid max-w-[60ch] gap-2 text-[14px] text-emerald-900/90">
+                <li className="flex gap-2"><CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-700" aria-hidden /> Vastutustundlik, andmetel põhinev otsustamine</li>
+                <li className="flex gap-2"><CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-700" aria-hidden /> Selge hinnastamine ja läbipaistev protsess</li>
+                <li className="flex gap-2"><CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-700" aria-hidden /> Isikupärastatud lahendused eri olukordadele</li>
+              </ul>
+              <div className="mt-5 flex items-center gap-3">
                 <a
                   href={absUrl("kontakt")}
-                  className="inline-flex items-center justify-center rounded-full bg-emerald-600 px-4 py-2 text-[14px] font-medium text-white shadow-sm transition-transform hover:-translate-y-0.5 hover:bg-emerald-700 focus:outline-none focus-visible:ring focus-visible:ring-emerald-400"
+                  className="inline-flex items-center justify-center rounded-full bg-emerald-700 px-4 py-2 text-[14px] font-medium text-white shadow-sm transition-colors hover:bg-emerald-800 focus:outline-none focus-visible:ring focus-visible:ring-emerald-400"
                 >
                   Küsi hinnangut
                 </a>
-                <a href="#company-info-board" className="group inline-flex items-center gap-1 text-[14px] font-medium text-emerald-800 hover:text-emerald-900">
-                  Vaata kaarti
-                  <ChevronDown className="h-4 w-4 transition-transform group-hover:translate-y-0.5" aria-hidden />
-                </a>
+                <a href="#company-info-board" className="text-[14px] font-medium text-emerald-800 hover:text-emerald-900">Vaata kaarti</a>
+              </div>
+            </div>
+
+            {/* Right: Three horizontal tiles (match visual rhythm of 3 cards below) */}
+            <div className="md:col-span-7">
+              <div className="grid grid-cols-3 gap-3 md:gap-4">
+                <div className="flex h-full flex-col justify-between rounded-xl border border-emerald-900/10 bg-white/80 p-4 shadow-sm">
+                  <div className="flex items-center gap-2">
+                    <ShieldCheck className="h-5 w-5 text-emerald-700" aria-hidden />
+                    <p className="text-[15px] font-medium text-emerald-950">Kogemus</p>
+                  </div>
+                  <p className="mt-2 text-[13px] leading-6 text-emerald-900/85">Üle kümne aasta praktilist kogemust metsa ostu, hoolduse ja väärtuse tõstmise lahendustes.</p>
+                </div>
+                <div className="flex h-full flex-col justify-between rounded-xl border border-emerald-900/10 bg-white/80 p-4 shadow-sm">
+                  <div className="flex items-center gap-2">
+                    <Timer className="h-5 w-5 text-emerald-700" aria-hidden />
+                    <p className="text-[15px] font-medium text-emerald-950">Kiire reageerimine</p>
+                  </div>
+                  <p className="mt-2 text-[13px] leading-6 text-emerald-900/85">Esimene vastus 24 h jooksul. Tehingu ettevalmistus tõhusalt, ilma liigsete sammudeta.</p>
+                </div>
+                <div className="flex h-full flex-col justify-between rounded-xl border border-emerald-900/10 bg-white/80 p-4 shadow-sm">
+                  <div className="flex items-center gap-2">
+                    <Leaf className="h-5 w-5 text-emerald-700" aria-hidden />
+                    <p className="text-[15px] font-medium text-emerald-950">Kohandatud lahendused</p>
+                  </div>
+                  <p className="mt-2 text-[13px] leading-6 text-emerald-900/85">Läheneme igale kinnistule eraldi: eesmärgid, piirangud ja potentsiaal arvesse võetud.</p>
+                </div>
               </div>
             </div>
           </div>
