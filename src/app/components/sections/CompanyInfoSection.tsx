@@ -88,19 +88,30 @@ export default function CompanyInfoSection() {
 
               {/* Stretching card beneath tiles to utilize remaining whitespace */}
               <div className="mt-4 rounded-xl border border-emerald-900/10 bg-white/85 p-4 shadow-sm md:p-5">
-                <div className="flex flex-col items-start gap-3 md:flex-row md:items-center md:justify-between">
-                  <div className="flex items-center gap-3">
-                    <Image src="/metsa-hind-ikoon.png" alt="Metsa Hind" width={28} height={28} className="h-7 w-7 object-contain" />
+                {/* Two-column layout: left logo (10–15%), right copy with two stacked rows */}
+                <div className="grid grid-cols-1 items-center gap-4 md:grid-cols-12">
+                  {/* Left column: logo spanning the block height */}
+                  <div className="md:col-span-2 md:self-stretch">
+                    <div className="flex h-full items-center justify-center">
+                      <Image src="/metsa-hind-ikoon.png" alt="Metsa Hind" width={36} height={36} className="h-9 w-9 object-contain sm:h-10 sm:w-10" />
+                    </div>
                   </div>
-                  <p className="max-w-[70ch] text-[13px] leading-6 text-emerald-900/85">
-                    Hindame selget kokkulepet, korrektset asjaajamist ja rahulikku protsessi. Meie tööviis on fokusseeritud, tehniliselt täpne ja arvestab iga kinnistu eripära.
-                  </p>
+                  {/* Right column: description row + bullets row */}
+                  <div className="md:col-span-10">
+                    <div className="grid grid-rows-2 gap-3">
+                      {/* Row 1: description (two lines) */}
+                      <p className="max-w-[70ch] text-[13px] leading-6 text-emerald-900/85">
+                        Selged kokkulepped ja korrektne asjaajamine loovad rahuliku protsessi. Tegutseme täpselt ja asjatundlikult, arvestades iga kinnistu eripära.
+                      </p>
+                      {/* Row 2: bullets */}
+                      <ul className="grid grid-cols-1 gap-2 sm:grid-cols-3">
+                        <li className="flex items-start gap-2 text-[13px] text-emerald-900/90"><CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-700" aria-hidden /> Kokkulepetest kinnipidamine</li>
+                        <li className="flex items-start gap-2 text-[13px] text-emerald-900/90"><CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-700" aria-hidden /> Korrektne asjaajamine</li>
+                        <li className="flex items-start gap-2 text-[13px] text-emerald-900/90"><CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-700" aria-hidden /> Asjatundlik lähenemine</li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
-                <ul className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-3">
-                  <li className="flex items-start gap-2 text-[13px] text-emerald-900/90"><CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-700" aria-hidden /> Kokkulepetest kinnipidamine</li>
-                  <li className="flex items-start gap-2 text-[13px] text-emerald-900/90"><CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-700" aria-hidden /> Korrektne asjaajamine</li>
-                  <li className="flex items-start gap-2 text-[13px] text-emerald-900/90"><CheckCircle2 className="mt-0.5 h-4 w-4 text-emerald-700" aria-hidden /> Asjatundlik lähenemine</li>
-                </ul>
               </div>
             </div>
           </div>
