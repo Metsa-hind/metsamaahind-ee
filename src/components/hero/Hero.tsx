@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useId } from "react";
+import AvatarStack from "@/components/ui/AvatarStack";
 
 export default function Hero() {
   const formId = useId();
@@ -63,6 +64,28 @@ export default function Hero() {
             <p className="mt-3 text-[14px] text-emerald-700/70">
               *Kinnistu täpse hinna saamiseks saatke päring
             </p>
+
+            {/* Movable avatar stack demo (inline element) */}
+            <div className="mt-5 inline-block">
+              <AvatarStack
+                files={[
+                  "Maria-kliendi-tagasiside-metsa-hindamine.png",
+                  "Toomas-kliendi-tagasiside-metsa-hindamine.png",
+                  "Liia-kliendi-tagasiside-metsa-muuk.png",
+                  "Kris-kliendi-tagasiside-pollumaa-muuk.png",
+                ]}
+                alts={[
+                  "Maria kliendi tagasiside – metsa hindamine",
+                  "Toomas kliendi tagasiside – metsa hindamine",
+                  "Liia kliendi tagasiside – metsa müük",
+                  "Kris kliendi tagasiside – põllumaa müük",
+                ]}
+                size={36}
+                overlap={-11}
+                ringClass="ring-2 ring-white/90 dark:ring-neutral-900"
+                direction="ltr"
+              />
+            </div>
           </div>
 
           {/* Right form */}

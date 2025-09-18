@@ -204,7 +204,7 @@ export default function PriceDriversSection() {
               />
               <div className="relative z-10">
                 <div className="flex items-center gap-3">
-                  <d.icon className="h-5 w-5 text-emerald-700" />
+                  <d.icon className="h-5 w-5 text-emerald-700" strokeWidth={1.5} />
                   <h3 className="text-base font-semibold text-emerald-900">{d.title}</h3>
                 </div>
                 <p className="mt-2 text-sm text-slate-700">{d.description}</p>

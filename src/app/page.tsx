@@ -19,15 +19,16 @@ export default function Page() {
   return (
     <>
       <Hero />
-      <ProcessStepsSection />
-      {/* Company info after steps */}
+      {/* Company info second */}
       <div className="my-[60px]">
         <CompanyInfoSection />
       </div>
+      <ProcessStepsSection />
+      {/* Price drivers moved directly after steps */}
+      <PriceDriversSection />
       <MarketAveragesSection />
       <SpeciesPricesSection />
       <AveragePricesSection />
-      <PriceDriversSection />
       <UploadCard />
       <ValuationBreakdownSection />
       <ParallaxFeatureSection />

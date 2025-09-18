@@ -64,8 +64,8 @@ export default function ProcessStepsSection() {
            <ol className="grid grid-cols-1 gap-8 md:grid-cols-4">
              {steps.map(({ title, description, Icon }, index) => (
                <li key={title} className="relative text-center">
-                 <div className="group mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-white text-emerald-600">
-                   <Icon className="h-7 w-7 transition-colors duration-200 group-hover:text-black" aria-hidden />
+                <div className="group mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-white text-emerald-600">
+                  <Icon className="h-7 w-7 transition-colors duration-200 group-hover:text-black" strokeWidth={1} aria-hidden />
                  </div>
                  <h4 className="mt-4 text-base font-semibold text-emerald-900">
                    {title}
