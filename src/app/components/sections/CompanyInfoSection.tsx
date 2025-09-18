@@ -3,7 +3,8 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Script from "next/script";
-import { Building2, Hash, MapPin, Phone, Mail } from "lucide-react";
+import { Building2, Hash, MapPin, Phone, Mail, Leaf, ShieldCheck, Timer, CheckCircle2, ChevronDown } from "lucide-react";
+import { absUrl } from "@/lib/routes";
 
 export default function CompanyInfoSection() {
   const jsonLd = {
@@ -22,11 +23,95 @@ export default function CompanyInfoSection() {
   return (
     <section aria-labelledby="company-info" className="pb-[60px]">
       <div className="mx-auto w-full">
+        {/* Intro Card (new) */}
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.3 }}
+          className="mx-auto mb-6 w-full max-w-[1200px] overflow-hidden rounded-2xl border border-emerald-900/10 bg-white/80 shadow-[0_10px_30px_rgba(0,0,0,0.06)] ring-1 ring-emerald-900/5 backdrop-blur-sm"
+        >
+          <div className="relative grid grid-cols-1 gap-6 p-6 md:grid-cols-12 md:items-center">
+            {/* Background gradient + subtle vectors */}
+            <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(100%_120%_at_0%_0%,rgba(16,185,129,0.10),transparent_60%),radial-gradient(120%_100%_at_100%_100%,rgba(16,185,129,0.08),transparent_55%)]" />
+
+            {/* Left: Headline + subhead (5 cols) */}
+            <div className="md:col-span-5">
+              <h2 className="text-2xl font-semibold tracking-tight text-emerald-950 sm:text-3xl">Jätkusuutlik metsamajandus</h2>
+              <p className="mt-3 max-w-[56ch] text-[15px] leading-7 text-emerald-900/90">
+                Oleme sõltumatu metsaostu- ja haldusettevõte, kes ühendab vastutustundliku majandamise, ausa hinnastamise ja kiire teostuse. Aitame kinnistul tuua pikaajalist tulu ning hoida metsad elujõulised ka homme.
+              </p>
+            </div>
+
+            {/* Middle: Value pills (4 cols) */}
+            <div className="md:col-span-4">
+              <ul className="grid grid-cols-1 gap-3 sm:grid-cols-3 md:grid-cols-1">
+                <li className="flex items-start gap-3 rounded-xl border border-emerald-900/10 bg-white/70 p-3 shadow-sm">
+                  <Leaf className="mt-0.5 h-5 w-5 text-emerald-700" aria-hidden />
+                  <div>
+                    <p className="text-[15px] font-medium text-emerald-950">Kõrgeim metsamaa hind</p>
+                    <p className="text-[13px] text-emerald-900/80">Läbipaistev pakkumine ja konkurentsipõhine hindamine.</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3 rounded-xl border border-emerald-900/10 bg-white/70 p-3 shadow-sm">
+                  <Timer className="mt-0.5 h-5 w-5 text-emerald-700" aria-hidden />
+                  <div>
+                    <p className="text-[15px] font-medium text-emerald-950">Kiire protsess</p>
+                    <p className="text-[13px] text-emerald-900/80">Pakkumine 24 h, notarini 1–2 nädalaga.</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3 rounded-xl border border-emerald-900/10 bg-white/70 p-3 shadow-sm">
+                  <ShieldCheck className="mt-0.5 h-5 w-5 text-emerald-700" aria-hidden />
+                  <div>
+                    <p className="text-[15px] font-medium text-emerald-950">Usaldusväärsus</p>
+                    <p className="text-[13px] text-emerald-900/80">10+ aastat kogemust, 4000+ edukat tehingut.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            {/* Right: KPIs + CTA (3 cols) */}
+            <div className="md:col-span-3">
+              <div className="grid grid-cols-2 gap-3">
+                <div className="rounded-xl border border-emerald-900/10 bg-white/70 p-3 text-center shadow-sm">
+                  <p className="text-xl font-semibold text-emerald-950">10+</p>
+                  <p className="text-[12px] text-emerald-900/80">aastat turul</p>
+                </div>
+                <div className="rounded-xl border border-emerald-900/10 bg-white/70 p-3 text-center shadow-sm">
+                  <p className="text-xl font-semibold text-emerald-950">4000+</p>
+                  <p className="text-[12px] text-emerald-900/80">edukat tehingut</p>
+                </div>
+                <div className="rounded-xl border border-emerald-900/10 bg-white/70 p-3 text-center shadow-sm">
+                  <p className="text-xl font-semibold text-emerald-950">24 h</p>
+                  <p className="text-[12px] text-emerald-900/80">esmane pakkumine</p>
+                </div>
+                <div className="rounded-xl border border-emerald-900/10 bg-white/70 p-3 text-center shadow-sm">
+                  <p className="text-xl font-semibold text-emerald-950">5000+</p>
+                  <p className="text-[12px] text-emerald-900/80">rahulolevat klienti</p>
+                </div>
+              </div>
+              <div className="mt-3 flex items-center gap-3">
+                <a
+                  href={absUrl("kontakt")}
+                  className="inline-flex items-center justify-center rounded-full bg-emerald-600 px-4 py-2 text-[14px] font-medium text-white shadow-sm transition-transform hover:-translate-y-0.5 hover:bg-emerald-700 focus:outline-none focus-visible:ring focus-visible:ring-emerald-400"
+                >
+                  Küsi hinnangut
+                </a>
+                <a href="#company-info-board" className="group inline-flex items-center gap-1 text-[14px] font-medium text-emerald-800 hover:text-emerald-900">
+                  Vaata kaarti
+                  <ChevronDown className="h-4 w-4 transition-transform group-hover:translate-y-0.5" aria-hidden />
+                </a>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.3 }}
+          id="company-info-board"
           className="group relative mx-auto w-full max-w-[1200px] rounded-2xl border border-emerald-900/10 bg-white backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] ring-1 ring-emerald-900/5 transition-all duration-300 ease-out"
         >
           <div className="absolute inset-0 -z-10 overflow-hidden rounded-2xl">
