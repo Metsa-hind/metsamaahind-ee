@@ -7,7 +7,7 @@
     "dev": "npx next dev -p 8972",
     "build": "next build",
     "export": "next build && next export",
-    "start": "next start",
+    "start": "next start -p 8972",
     "typecheck": "tsc --noEmit",
     "sitemap": "next-sitemap",
     "lint:spacing": "node scripts/lint-spacing.cjs"

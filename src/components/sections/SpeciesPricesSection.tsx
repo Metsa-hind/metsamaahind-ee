@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { HeadingBadge, SectionH2 } from "@/components/globals/GlobalComponents";
 
 type Tile = {
   title: string;
@@ -35,12 +36,10 @@ export default function SpeciesPricesSection() {
     <section className="relative py-12 sm:py-16">
       <div className="mx-auto w-full max-w-[1200px] px-4">
         <div className="mb-6">
-          <p className="inline-flex items-center gap-2 rounded-full bg-emerald-100/80 px-3 py-1 text-xs font-medium text-emerald-900">
-            Metsamaa hektari liigipõhised hinnad
-          </p>
-          <h2 className="mt-3 font-adcreative text-2xl text-slate-900 sm:text-3xl">
+          <HeadingBadge label="Metsamaa hektari liigipõhised hinnad" />
+          <SectionH2>
             Metsa hektari keskmised hinnad liigiti
-          </h2>
+          </SectionH2>
           
           {/* Horizontal bulleted list with green checkmarks */}
           <div className="mt-[10px] flex flex-wrap items-center gap-5">
@@ -56,12 +55,7 @@ export default function SpeciesPricesSection() {
               </svg>
               <span className="text-sm italic text-slate-700">Mets on raieküps</span>
             </div>
-            <div className="flex items-center gap-2">
-              <svg className="h-4 w-4 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-              </svg>
-              <span className="text-sm italic text-slate-700">Kinnistule on normaalne ligipääs</span>
-            </div>
+            
             <div className="flex items-center gap-2">
               <svg className="h-4 w-4 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />

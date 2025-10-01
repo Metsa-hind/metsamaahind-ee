@@ -21,14 +21,14 @@ export default function SiteBackground() {
   }, []);
 
   return (
-    <div aria-hidden className="fixed inset-0 -z-50 overflow-hidden">
+    <div aria-hidden className="fixed left-0 right-0 top-0 bottom-0 -z-50 overflow-hidden pointer-events-none">
       {/* Fluid green gradient across the whole site */}
       <div className="absolute inset-0 bg-[radial-gradient(1200px_800px_at_50%_-10%,#c7f9cc_0%,#a7f3d0_20%,#d1fae5_40%,#ecfdf5_65%,#f7fdf9_100%)]" />
 
       {/* A FEW decorative vectors with gentle parallax */}
       <div
         ref={layerRef}
-        className="absolute inset-0 pointer-events-none [transform:translate3d(calc(var(--mx,0)*6px),calc(var(--my,0)*6px),0)] transition-transform duration-100 ease-linear"
+        className="absolute inset-0 pointer-events-none select-none [transform:translate3d(calc(var(--mx,0)*6px),calc(var(--my,0)*6px),0)] transition-transform duration-100 ease-linear"
         style={{ willChange: "transform" }}
       >
         <svg className="absolute -left-16 top-24 h-56 w-56 opacity-20 text-emerald-700" viewBox="0 0 100 100" fill="currentColor">
@@ -37,7 +37,7 @@ export default function SiteBackground() {
         <svg className="absolute right-[-40px] top-[55%] h-64 w-64 opacity-15 text-emerald-800" viewBox="0 0 100 100" fill="currentColor">
           <circle cx="50" cy="50" r="42" />
         </svg>
-        <svg className="absolute left-[55%] -bottom-16 h-72 w-72 opacity-10 text-emerald-900" viewBox="0 0 100 100" fill="currentColor">
+        <svg className="absolute left-1/2 md:left-[55%] -bottom-16 h-72 w-72 opacity-10 text-emerald-900" viewBox="0 0 100 100" fill="currentColor">
           <path d="M50 5l12 16H56l10 12H56l8 10H36l8-10H34l10-12H38z" />
         </svg>
       </div>

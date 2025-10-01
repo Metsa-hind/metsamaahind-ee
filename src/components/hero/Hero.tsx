@@ -4,24 +4,56 @@ import Image from "next/image";
 import { useId } from "react";
 import AvatarStack from "@/components/ui/AvatarStack";
 
-export default function Hero() {
+export default function Hero({
+  title = "Metsa müük lihtsalt ja murevabalt",
+  subtitle = "Metsa müük usaldage oma ala professionaalidele, ostame teie kinnistu makstes metsamaa eest turu kõrgeimat hinda.",
+  formTitle = "Arvuta metsa hind",
+  hideFormBgImage = false,
+  titleHighlight,
+  hidePrimaryCta,
+  secondaryHref,
+}: {
+  title?: string;
+  subtitle?: string;
+  formTitle?: string;
+  hideFormBgImage?: boolean;
+  titleHighlight?: string;
+  hidePrimaryCta?: boolean;
+  secondaryHref?: string;
+}) {
   const formId = useId();
 
   return (
-    <section className="relative isolate overflow-hidden">
-      <div className="mx-auto w-full max-w-[1200px] px-4 pt-24 sm:pt-28 min-h-[calc(100vh-80px)]">
+    <section className="relative isolate">
+      <div className="mx-auto w-full max-w-[1200px] px-4 pt-6 sm:pt-10 md:pt-24">
         <div className="mt-[25px] grid items-center gap-10 md:grid-cols-2 md:gap-14 md:[grid-template-columns:1.15fr_0.85fr] h-full">
           {/* Left copy */}
           <div className="text-emerald-950/95">
-            <h1 className="mt-4 font-adcreative text-4xl leading-[1.1] sm:text-5xl md:text-6xl text-emerald-950">
-              Saa teada oma <span className="text-emerald-700">metsa hind</span>
+            <div className="-mt-[15px]">
+            <h1 className="mt-[60px] md:mt-4 font-adcreative text-4xl leading-[1.1] sm:text-5xl md:text-6xl text-emerald-950">
+              {(() => {
+                if (titleHighlight && title.includes(titleHighlight)) {
+                  const startIndex = title.indexOf(titleHighlight);
+                  const before = title.slice(0, startIndex);
+                  const match = title.slice(startIndex, startIndex + titleHighlight.length);
+                  const after = title.slice(startIndex + titleHighlight.length);
+                  return (
+                    <>
+                      {before}
+                      <span className="text-emerald-600">{match}</span>
+                      {after}
+                    </>
+                  );
+                }
+                return title;
+              })()}
             </h1>
 
-            <p className="mt-[21px] text-lg font-normal text-emerald-800 sm:text-xl">
-              Soovite teada Saada oma metsakinnistu täpset hinda? Saatke meile oma kinnistu andmed ning meie spetsialist <strong className="italic">hindab teie kinnistu</strong>.
+            <p className="mt-[21px] pr-0 md:pr-[80px] text-lg font-normal text-emerald-800 sm:text-xl">
+              {subtitle}
             </p>
 
-            <ul className="mt-[29px] pt-[10px] grid max-w-lg grid-cols-1 gap-3 text-sm text-emerald-900/80">
+            <ul className="mt-[14px] pt-[10px] grid max-w-lg grid-cols-1 gap-3 text-sm text-emerald-900/80">
               {[
                 "Kiire vastus",
                 "15+ aastat kogemust",
@@ -41,20 +73,22 @@ export default function Hero() {
             </p>
 
             <div className="mt-3 flex items-center gap-3">
+              {!hidePrimaryCta && (
+                <a
+                  href="https://metsamaahind.ee/"
+                  className="group inline-flex h-11 items-center rounded-lg bg-emerald-600 px-5 text-sm font-semibold text-white hover:bg-emerald-700 transition-all duration-200"
+                >
+                  Metsa hind
+                  <svg className="ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              )}
               <a
-                href="#metsa-hinnad"
+                href={secondaryHref || "https://metsamaahind.ee/#hinnastatistika"}
                 className="group inline-flex h-11 items-center rounded-lg bg-gradient-to-r from-emerald-50 to-emerald-100 border border-emerald-200/60 px-4 text-sm font-semibold text-emerald-900 hover:from-emerald-100 hover:to-emerald-150 transition-all duration-200"
               >
                 Hinnastatistika
-                <svg className="ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </a>
-              <a
-                href="#form"
-                className="group inline-flex h-11 items-center rounded-lg bg-emerald-600 px-5 text-sm font-semibold text-white hover:bg-emerald-700 transition-all duration-200"
-              >
-                Näidiskalkulaator
                 <svg className="ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
@@ -64,21 +98,22 @@ export default function Hero() {
             <p className="mt-3 text-[14px] text-emerald-700/70">
               *Kinnistu täpse hinna saamiseks saatke päring
             </p>
+            </div>
 
             {/* Movable avatar stack demo (inline element) */}
-            <div className="mt-5 inline-block">
+            <div className="mt-[30px] inline-block">
               <AvatarStack
                 files={[
+                  "Kris-kliendi-tagasiside-pollumaa-muuk.png",
+                  "Liia-kliendi-tagasiside-metsa-muuk.png",
                   "Maria-kliendi-tagasiside-metsa-hindamine.png",
                   "Toomas-kliendi-tagasiside-metsa-hindamine.png",
-                  "Liia-kliendi-tagasiside-metsa-muuk.png",
-                  "Kris-kliendi-tagasiside-pollumaa-muuk.png",
                 ]}
                 alts={[
+                  "Kris kliendi tagasiside – põllumaa müük",
+                  "Liia kliendi tagasiside – metsa müük",
                   "Maria kliendi tagasiside – metsa hindamine",
                   "Toomas kliendi tagasiside – metsa hindamine",
-                  "Liia kliendi tagasiside – metsa müük",
-                  "Kris kliendi tagasiside – põllumaa müük",
                 ]}
                 size={36}
                 overlap={-11}
@@ -94,18 +129,20 @@ export default function Hero() {
               aria-labelledby={`${formId}-title`}
               className="relative overflow-hidden rounded-2xl bg-white/95 p-5 shadow-[0_8px_30px_rgba(0,0,0,0.25)] backdrop-blur sm:p-6 transition-transform duration-300 hover:scale-[1.02]"
             >
-              <div className="pointer-events-none absolute inset-0 -z-10">
-                <Image
-                  src="/metsamaa-hind-taust-kontaktivorm.png"
-                  alt=""
-                  fill
-                  sizes="(min-width: 1024px) 520px, (min-width: 640px) 560px, 100vw"
-                  quality={60}
-                  className="object-cover"
-                />
-              </div>
+              { !hideFormBgImage && (
+                <div className="pointer-events-none absolute inset-0 -z-10">
+                  <Image
+                    src="/metsamaa-hind-taust-kontaktivorm.png"
+                    alt=""
+                    fill
+                    sizes="(min-width: 1024px) 520px, (min-width: 640px) 560px, 100vw"
+                    quality={60}
+                    className="object-cover"
+                  />
+                </div>
+              )}
               <h2 id={`${formId}-title`} className="font-adcreative text-xl text-emerald-900">
-                Arvuta metsa hind
+                {formTitle}
               </h2>
               <p className="mt-1 text-sm text-slate-600">
                 Sisesta andmed tasuta esialgse hinnangu saamiseks.

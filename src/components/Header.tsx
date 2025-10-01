@@ -1,226 +1,217 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
-import { ChevronDown, Mail, Settings, FileText, Calculator, ShoppingCart, Tractor, Axe } from "lucide-react";
+import { ChevronDown, Trees, Axe, Tractor, Mail } from "lucide-react";
 import { Container } from "@/components/primitives/Container";
-import { Button } from "@/components/ui/button";
 
-interface DropdownItem {
-  label: string;
-  href: string;
-  icon: any;
+type Item = { label: string; href: string };
+
+const METSAMAAD: Item[] = [
+  { label: "Metsa müük", href: "https://metsamaahind.ee/metsa-muuk/" },
+  { label: "Metsa hind", href: "https://metsamaahind.ee" },
+  { label: "Metsa istutamine", href: "https://metsamaahind.ee/metsa-istutamine/" },
+];
+
+const METSARAIE: Item[] = [
+  { label: "Raieõiguse müük", href: "https://metsamaahind.ee/raieoiguse-muuk/" },
+  { label: "Raieõiguse hind", href: "https://metsamaahind.ee/raieoiguse-hind/" },
+  { label: "Metsateatis", href: "https://metsamaahind.ee/metsateatis/" },
+  { label: "Hooldusraied", href: "https://metsamaahind.ee/hooldusraied/" },
+];
+
+const POLLUMAA: Item[] = [
+  { label: "Põllumaa ost", href: "https://metsamaahind.ee/pollumaa-ost/" },
+  { label: "Põllumaa müük", href: "https://metsamaahind.ee/pollumaa-muuk/" },
+  { label: "Põllumaa hind", href: "https://metsamaahind.ee/pollumaa-hind/" },
+];
+
+function Dropdown({ label, items, Icon }: { label: string; items: Item[]; Icon: any }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="relative" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
+      <button className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-emerald-900 hover:bg-emerald-50">
+        <Icon className="h-4 w-4 text-emerald-700" />
+        {label}
+        <ChevronDown className="h-4 w-4" />
+      </button>
+      {open && (
+        <div className="absolute left-0 top-full z-[60] mt-0 -translate-y-[1px] w-56 overflow-hidden rounded-xl border border-emerald-100 bg-white shadow-xl">
+          <ul className="py-2 text-sm text-emerald-900">
+            {items.map((i) => (
+              <li key={i.href}>
+                <a href={i.href} className="block px-4 py-2 hover:bg-emerald-50">
+                  {i.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
 }
 
-const servicesDropdown: DropdownItem[] = [
-  { label: "Metsa müük", href: "/metsa-myuk", icon: ShoppingCart },
-  { label: "Metsa ost", href: "/metsa-ost", icon: ShoppingCart },
-  { label: "Põllumaa müük", href: "/pollumaa-myuk", icon: Tractor },
-  { label: "Põllumaa ost", href: "/pollumaa-ost", icon: Tractor },
-  { label: "Metsa istutamine", href: "/metsa-istutamine", icon: Settings },
-  { label: "Raieõiguse ost", href: "/raieoiguse-ost", icon: Axe },
-  { label: "Raieõiguse müük", href: "/raieoiguse-myuk", icon: Axe },
-];
-
-const infoDropdown: DropdownItem[] = [
-  { label: "Metsa hind", href: "/metsa-hind", icon: Calculator },
-  { label: "Metsateatis", href: "/metsateatis", icon: FileText },
-  { label: "Metsakava", href: "/metsakava", icon: FileText },
-];
-
 export function Header() {
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [openSection, setOpenSection] = useState<null | "metsamaa" | "metsaraie" | "pollumaa" >(null);
 
   return (
-    <header className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-emerald-100/50 shadow-sm">
-      <Container className="py-4 pl-4 lg:pl-6">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-emerald-100/70 bg-white/90 backdrop-blur">
+      <Container className="py-[10px] lg:py-[15px]">
         <div className="flex items-center justify-between">
-          {/* Logo Section */}
-          <div className="flex items-center gap-[10px]">
-            {/* Logo Placeholder */}
-            <motion.div
-              className="flex items-center gap-3 cursor-pointer"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+          {/* Left cluster: logo + nav */}
+          <div className="flex items-center gap-3 lg:gap-5">
+            <a href="https://metsamaahind.ee" className="inline-flex items-center gap-2">
+              <Image src="/metsa-hind-ikoon.png" alt="Metsa Hind" width={36} height={36} className="h-9 w-9" />
+            </a>
+
+            {/* Mobile-only CTA next to logo */}
+            <a
+              href="https://metsamaahind.ee/kontakt/"
+              className="lg:hidden inline-flex items-center rounded-lg bg-emerald-100 px-3 py-1.5 text-sm font-semibold text-emerald-800"
             >
-              <Image
-                src="/metsa-hind-ikoon.png"
-                alt="MetsaPartner logo"
-                width={48}
-                height={48}
-                className="h-[48px] w-[48px] object-contain bg-transparent"
-                priority
-              />
-            </motion.div>
+              Kontaktivorm
+            </a>
 
-            {/* Navigation */}
+            {/* Desktop nav next to logo */}
             <nav className="hidden lg:flex items-center gap-1">
-              {/* Avaleht */}
-              <motion.a
-                href="/"
-                className="px-4 py-2 text-sm font-medium text-slate-700 hover:text-emerald-700 transition-colors duration-200 rounded-lg hover:bg-emerald-50"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
+            <a href="https://metsamaahind.ee" className="rounded-lg px-3 py-2 text-sm font-medium text-emerald-900 hover:bg-emerald-50">
                 Avaleht
-              </motion.a>
-
-              {/* Teenused Dropdown */}
-              <div
-                className="relative"
-                onMouseEnter={() => setActiveDropdown('services')}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <motion.button
-                  className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:text-emerald-700 transition-colors duration-200 rounded-lg hover:bg-emerald-50"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Teenused
-                  <motion.div
-                    animate={{ rotate: activeDropdown === 'services' ? 180 : 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <ChevronDown className="w-4 h-4" />
-                  </motion.div>
-                </motion.button>
-
-                <AnimatePresence>
-                  {activeDropdown === 'services' && (
-                    <motion.div
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.2 }}
-                      className="absolute top-full left-0 mt-1 w-64 bg-white rounded-xl shadow-xl border border-emerald-100/50 overflow-hidden"
-                    >
-                      {servicesDropdown.map((item, index) => {
-                        const IconComponent = item.icon;
-                        return (
-                          <motion.a
-                            key={item.href}
-                            href={item.href}
-                            className="flex items-center gap-3 px-4 py-3 text-sm text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 transition-colors duration-200 border-b border-emerald-50/50 last:border-b-0"
-                            initial={{ opacity: 0, x: -10 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: index * 0.05 }}
-                          >
-                            <IconComponent className="w-4 h-4 text-emerald-600" />
-                            {item.label}
-                          </motion.a>
-                        );
-                      })}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-
-              {/* Info Dropdown */}
-              <div
-                className="relative"
-                onMouseEnter={() => setActiveDropdown('info')}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <motion.button
-                  className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:text-emerald-700 transition-colors duration-200 rounded-lg hover:bg-emerald-50"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Info
-                  <motion.div
-                    animate={{ rotate: activeDropdown === 'info' ? 180 : 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <ChevronDown className="w-4 h-4" />
-                  </motion.div>
-                </motion.button>
-
-                <AnimatePresence>
-                  {activeDropdown === 'info' && (
-                    <motion.div
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.2 }}
-                      className="absolute top-full left-0 mt-1 w-56 bg-white rounded-xl shadow-xl border border-emerald-100/50 overflow-hidden"
-                    >
-                      {infoDropdown.map((item, index) => {
-                        const IconComponent = item.icon;
-                        return (
-                          <motion.a
-                            key={item.href}
-                            href={item.href}
-                            className="flex items-center gap-3 px-4 py-3 text-sm text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 transition-colors duration-200 border-b border-emerald-50/50 last:border-b-0"
-                            initial={{ opacity: 0, x: -10 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: index * 0.05 }}
-                          >
-                            <IconComponent className="w-4 h-4 text-emerald-600" />
-                            {item.label}
-                          </motion.a>
-                        );
-                      })}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-
-              {/* Kontakt */}
-              <motion.a
-                href="/kontakt"
-                className="px-4 py-2 text-sm font-medium text-slate-700 hover:text-emerald-700 transition-colors duration-200 rounded-lg hover:bg-emerald-50"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                Kontakt
-              </motion.a>
+            </a>
+            <Dropdown label="Metsamaa" items={METSAMAAD} Icon={Trees} />
+            <Dropdown label="Metsaraie" items={METSARAIE} Icon={Axe} />
+            <Dropdown label="Põllumaa" items={POLLUMAA} Icon={Tractor} />
             </nav>
           </div>
 
-          {/* Right Side - CTA */}
-          <div className="flex items-center gap-4">
-            {/* Quick Contact Button */}
-            <motion.a
-              href="mailto:info@metsapartner.ee"
-              className="hidden md:flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-700 hover:text-emerald-700 transition-colors duration-200 rounded-lg hover:bg-emerald-50"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+          {/* Right side: email + CTA for desktop */}
+          <div className="hidden lg:flex items-center gap-4">
+            <a href="mailto:info@metsamaahind.ee" className="inline-flex items-center gap-2 text-sm font-medium text-emerald-700 hover:text-emerald-800">
+              <Mail className="h-5 w-5 flex-shrink-0" />
+              <span>info@metsamaahind.ee</span>
+            </a>
+            <a
+              href="https://metsamaahind.ee/kontakt/"
+              className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-5 py-2.5 font-semibold text-white shadow transition-colors hover:bg-emerald-700"
             >
-              <Mail className="w-4 h-4" />
-              <span className="hidden xl:inline">info@metsapartner.ee</span>
-            </motion.a>
+                KONTAKTIVORM
+              <span aria-hidden>→</span>
+              </a>
+          </div>
 
-            {/* CTA Button */}
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+          {/* Mobile trigger */}
+            <button
+              onClick={() => setMobileOpen(true)}
+            className="lg:hidden inline-flex items-center gap-2 rounded-md px-2 py-1 text-emerald-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
+            aria-expanded={mobileOpen}
+              aria-label="Ava menüü"
             >
-              <Button
-                className="bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white font-semibold px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group"
-              >
-                Küsi hinnangut
-                <motion.div
-                  className="ml-2"
-                  animate={{ x: [0, 4, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  →
-                </motion.div>
-              </Button>
-            </motion.div>
-
-            {/* Mobile Menu Button */}
-            <button className="lg:hidden p-2 text-slate-700 hover:text-emerald-700 transition-colors duration-200">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            <span className="text-sm font-semibold">Menüü</span>
+            <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
-          </div>
         </div>
       </Container>
 
+      {/* Mobile overlay */}
+      {mobileOpen && (
+        <div
+          className="fixed inset-0 z-[70] bg-white/95 backdrop-blur lg:hidden"
+                onClick={() => setMobileOpen(false)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <div className="mx-auto mt-20 w-[92%] max-w-sm rounded-2xl border border-emerald-100 bg-white p-5 shadow-xl" onClick={(e) => e.stopPropagation()}>
+                  <div className="flex items-center justify-between">
+              <div className="text-lg font-semibold text-emerald-900">Menüü</div>
+              <button onClick={() => setMobileOpen(false)} aria-label="Sulge" className="rounded-md p-2 text-slate-700 hover:bg-slate-100">
+                <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+                  </div>
 
+                  <nav className="mt-4 space-y-5 text-emerald-900">
+              <a href="https://metsamaahind.ee" className="block rounded-lg px-3 py-2 text-sm hover:bg-emerald-50" onClick={() => setMobileOpen(false)}>
+                Avaleht
+              </a>
+
+                    <div>
+                <button
+                  type="button"
+                  onClick={() => setOpenSection(openSection === "metsamaa" ? null : "metsamaa")}
+                  className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm font-semibold text-slate-600 hover:bg-emerald-50"
+                  aria-expanded={openSection === "metsamaa"}
+                >
+                  <span className="uppercase tracking-wide">Metsamaa</span>
+                  <ChevronDown className={`h-4 w-4 transition-transform ${openSection === "metsamaa" ? "rotate-180" : "rotate-0"}`} />
+                </button>
+                {openSection === "metsamaa" && (
+                      <div className="mt-2 grid gap-1">
+                    {METSAMAAD.map((i) => (
+                          <a key={i.href} href={i.href} className="rounded-lg px-3 py-2 text-sm hover:bg-emerald-50" onClick={() => setMobileOpen(false)}>
+                            {i.label}
+                          </a>
+                        ))}
+                      </div>
+                )}
+                    </div>
+
+                    <div>
+                <button
+                  type="button"
+                  onClick={() => setOpenSection(openSection === "metsaraie" ? null : "metsaraie")}
+                  className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm font-semibold text-slate-600 hover:bg-emerald-50"
+                  aria-expanded={openSection === "metsaraie"}
+                >
+                  <span className="uppercase tracking-wide">Metsaraie</span>
+                  <ChevronDown className={`h-4 w-4 transition-transform ${openSection === "metsaraie" ? "rotate-180" : "rotate-0"}`} />
+                </button>
+                {openSection === "metsaraie" && (
+                      <div className="mt-2 grid gap-1">
+                    {METSARAIE.map((i) => (
+                          <a key={i.href} href={i.href} className="rounded-lg px-3 py-2 text-sm hover:bg-emerald-50" onClick={() => setMobileOpen(false)}>
+                            {i.label}
+                          </a>
+                        ))}
+                      </div>
+                )}
+                    </div>
+
+                    <div>
+                <button
+                  type="button"
+                  onClick={() => setOpenSection(openSection === "pollumaa" ? null : "pollumaa")}
+                  className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm font-semibold text-slate-600 hover:bg-emerald-50"
+                  aria-expanded={openSection === "pollumaa"}
+                >
+                  <span className="uppercase tracking-wide">Põllumaa</span>
+                  <ChevronDown className={`h-4 w-4 transition-transform ${openSection === "pollumaa" ? "rotate-180" : "rotate-0"}`} />
+                </button>
+                {openSection === "pollumaa" && (
+                      <div className="mt-2 grid gap-1">
+                    {POLLUMAA.map((i) => (
+                          <a key={i.href} href={i.href} className="rounded-lg px-3 py-2 text-sm hover:bg-emerald-50" onClick={() => setMobileOpen(false)}>
+                            {i.label}
+                          </a>
+                        ))}
+                      </div>
+                )}
+                    </div>
+
+              <a href="https://metsamaahind.ee/kontakt/" className="block rounded-lg px-3 py-2 text-sm hover:bg-emerald-50" onClick={() => setMobileOpen(false)}>
+                Kontakt
+              </a>
+            </nav>
+          </div>
+                    </div>
+          )}
     </header>
   );
 }
+
+export default Header;
+
+

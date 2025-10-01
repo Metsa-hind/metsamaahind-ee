@@ -4,10 +4,59 @@
 
 /* sensible defaults */
 :root { color-scheme: light; }
-html, body { height: 100%; }
-body { @apply bg-white text-slate-900 antialiased; }
+html, body { height: auto; min-height: 100%; }
+html { overflow-x: hidden; overflow-y: auto; }
+/* Ensure app root doesn't introduce its own scroll context */
+#__next { min-height: 100%; height: auto; overflow: visible; }
+/* Keep body as simple as possible to avoid nested scrollers */
+body { @apply bg-white text-slate-900 antialiased overflow-x-hidden; }
 
 /* AdCreative-style font helper */
 .font-adcreative{
   font-family: var(--font-adcreative), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* Lightweight wood grain inspired pattern using layered gradients (no images) */
+.bg-woodgrain {
+  background-image:
+    radial-gradient(ellipse at 20% 30%, rgba(16,185,129,0.06), transparent 55%),
+    radial-gradient(ellipse at 80% 20%, rgba(16,185,129,0.05), transparent 50%),
+    repeating-linear-gradient(90deg,
+      rgba(30, 41, 59, 0.03) 0px,
+      rgba(30, 41, 59, 0.03) 2px,
+      transparent 2px,
+      transparent 6px
+    ),
+    repeating-linear-gradient(0deg,
+      rgba(30, 41, 59, 0.025) 0px,
+      rgba(30, 41, 59, 0.025) 3px,
+      transparent 3px,
+      transparent 9px
+    );
+  background-blend-mode: overlay, overlay, multiply, normal;
+}
+
+/* Route-specific background for /pollumaa-ost – wheat tone with subtle agricultural field lines */
+.bg-agri-wheat {
+    /* Wheat-golden gradient background with 2 subtle parallax SVG shapes */
+    background-image:
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 64' fill='%23000000' fill-opacity='0.06'><rect x='20' y='22' width='50' height='22' rx='3'/><rect x='70' y='18' width='14' height='18' rx='2'/><circle cx='38' cy='50' r='10'/><circle cx='82' cy='50' r='12'/></svg>"),
+        url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 128' stroke='%23000000' stroke-opacity='0.08' fill='none' stroke-width='2'><path d='M32 8v112'/><path d='M32 30c-8 0-12-8-12-8M32 30c8 0 12-8 12-8'/><path d='M32 50c-8 0-12-8-12-8M32 50c8 0 12-8 12-8'/><path d='M32 70c-8 0-12-8-12-8M32 70c8 0 12-8 12-8'/><path d='M32 90c-8 0-12-8-12-8M32 90c8 0 12-8 12-8'/></svg>"),
+        linear-gradient(180deg, #fff8e6 0%, #f6e4ad 42%, #e6c458 100%);
+    background-position:
+        8% 28%,
+        88% 72%,
+        center;
+    background-repeat:
+        no-repeat,
+        no-repeat,
+        no-repeat;
+    background-size:
+        240px auto,
+        150px auto,
+        cover;
+    background-attachment:
+        fixed,
+        fixed,
+        scroll;
 }

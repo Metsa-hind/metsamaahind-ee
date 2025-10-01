@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 import { UploadCloud, Folder, ChevronDown } from "lucide-react";
+import SmartBadge from "@/components/ui/SmartBadge";
 
 // Standalone special section. Does not import any site primitives or site Container.
 // Fixed sizing: width 1200px, height 400px. Own styling only.
@@ -32,24 +33,25 @@ export default function UploadCard() {
   ];
   
   return (
-    <section data-scope="sections-special-upload-card" className="py-[160px]">
+    <section data-scope="sections-special-upload-card" className="py-16 sm:py-24 md:py-28">
       <div className="mx-auto w-full max-w-[1200px] px-4">
         <div className="mb-6 text-center">
-          <h2 className="mt-3 font-adcreative text-2xl text-slate-900 sm:text-3xl">
+          <SmartBadge label="Metsakava alusel täpsem hind" className="-mt-4" />
+          <h2 className="mt-5 font-adcreative font-semibold text-3xl text-slate-900 sm:text-4xl">
             Metsa hindamine metsakava alusel
           </h2>
-          <p className="mt-2 mb-[20px] pb-[20px] text-sm text-slate-600">
+          <p className="mt-4 mb-[50px] px-0 sm:px-10 md:px-[140px] text-[1.1rem] leading-7 text-slate-700 sm:text-[1.24rem]">
             Saatke meile oma kinnistu metsakava ning teeme teile kohe metsamajandamiskavas leitavate andmete põhjal täpse metsa hindamise koos meiepoolse pakkumisega
           </p>
         </div>
       </div>
       
       
-      <div className="relative" style={{ width: 1200, height: "auto", margin: "0 auto" }}>
-        {/* Two columns: 30% / 70% */}
-        <div className="h-full w-full" style={{ display: "grid", gridTemplateColumns: "70% 30%", columnGap: 16, rowGap: 20 }}>
-          {/* LEFT: Upload card */}
-          <div className="h-[660px] rounded-xl bg-white/90 ring-1 ring-emerald-900/10 shadow-[0_12px_30px_rgba(0,0,0,0.12)]" style={{ backgroundImage: "linear-gradient(180deg, rgba(16,185,129,0.01) 0%, rgba(16,185,129,0.01) 100%)", gridColumn: "2 / 3", gridRow: "1" }}>
+      <div className="relative mx-auto w-full max-w-[1200px] px-4">
+        {/* Responsive grid: stack on mobile, 70/30 on md+ */}
+        <div className="grid grid-cols-1 gap-4 sm:gap-5 md:gap-6 md:[grid-template-columns:0.7fr_0.3fr]">
+          {/* RIGHT on desktop: Upload card (placed first on mobile for visibility) */}
+          <div className="order-2 md:order-2 rounded-xl bg-white/90 ring-1 ring-emerald-900/10 shadow-[0_12px_30px_rgba(0,0,0,0.12)] md:h-[660px]" style={{ backgroundImage: "linear-gradient(180deg, rgba(16,185,129,0.01) 0%, rgba(16,185,129,0.01) 100%)" }}>
             <div className="flex h-full w-full flex-col items-center justify-start px-4 py-4 text-center">
               <div className="mt-[4px] text-[24px] font-semibold text-emerald-900">Arvuta metsa täpne hind</div>
               <div className="mt-2 mb-[20px] max-w-[300px] text-[12px] leading-5 text-slate-700">
@@ -68,7 +70,7 @@ export default function UploadCard() {
                 onDragEnter={(e) => { e.preventDefault(); setDrag(true); }}
                 onDragLeave={() => setDrag(false)}
                 onDrop={(e) => { e.preventDefault(); setDrag(false); const f = e.dataTransfer.files?.[0]; if (f) setFileName(f.name); }}
-                className={`mt-3 flex h-[162px] w-[295px] flex-col items-center justify-center rounded-[12px] border-2 border-dashed ${drag ? "border-emerald-600 bg-emerald-50/70" : "border-emerald-200"}`}
+                className={`mt-3 flex h-[162px] w-full max-w-[295px] flex-col items-center justify-center rounded-[12px] border-2 border-dashed ${drag ? "border-emerald-600 bg-emerald-50/70" : "border-emerald-200"}`}
                 style={{ backgroundImage: "url('/metsakava-uleslaadimine-vali-fail-taustapilt.png')", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}
               >
                 <UploadCloud className="h-8 w-8 text-emerald-600" />
@@ -112,7 +114,7 @@ export default function UploadCard() {
                 <div className="mt-2 flex items-center justify-center text-[12px] font-medium text-slate-600">
                   <span className="mr-1">🔒</span>
                   <span className="relative group cursor-help">
-                    Teie andmed on kaitstsud
+                    Teie andmed on kaitstud
                     <span className="pointer-events-none absolute left-full top-0 z-10 hidden w-[300px] pl-2 group-hover:block">
                       <span className="block rounded-[10px] border border-emerald-200" style={{ background: "rgba(16,185,129,0.03)" }}>
                         <div className="px-3 py-3 text-[12px] leading-5 text-slate-700">
@@ -125,11 +127,12 @@ export default function UploadCard() {
               </div>
             </div>
           </div>
-          <div className="h-[330px] self-start rounded-xl bg-white/80 ring-1 ring-emerald-900/10 shadow-[0_12px_30px_rgba(0,0,0,0.12)]" style={{ gridColumn: "1 / 2", gridRow: "1" }}>
+          {/* LEFT on desktop: Steps card */}
+          <div className="order-1 md:order-1 self-start rounded-xl bg-white/80 ring-1 ring-emerald-900/10 shadow-[0_12px_30px_rgba(0,0,0,0.12)] md:h-[330px]">
             <div className="h-full w-full" style={{ display: "grid", gridTemplateRows: "auto 1fr" }}>
               {/* Top 80%: three centered steps with equal spacing */}
               <div className="px-6 py-6">
-                <div className="grid grid-cols-3 items-start justify-items-center gap-6 mt-[-18px]">
+                <div className="grid grid-cols-1 sm:grid-cols-3 items-start justify-items-center gap-6 mt-[-18px]">
                   {/* Step 1 */}
                   <div className="relative flex w-full flex-col items-center text-center">
                     <div className="w-full mt-0 h-[130px] flex items-end justify-center">
@@ -169,8 +172,8 @@ export default function UploadCard() {
               
             
             </div>
-          {/* Below right column content (row 2, column 2) */}
-          <div className="px-6 ml-[40px] mt-[15px]" style={{ gridColumn: "1 / 2", gridRow: "2" }}>
+          {/* Below content (text + FAQ) */}
+          <div className="hidden md:block order-3 px-4 md:px-6 md:ml-[40px] mt-[15px] md:col-span-1">
             <h3 className="mt-[45px] text-[20px] font-semibold text-emerald-900">Metsamajandamiskava</h3>
             <p className="mt-2 text-[14px] leading-6 text-slate-700">Metsamajandamiskava on ametlik dokument, mis kirjeldab kinnistu metsa hetkeolukorda ja planeerib selle majandamist tavaliselt järgmiseks 10 aastaks. See sisaldab eraldiste kaarti ja kirjeldusi, pindalasid, puuliike ja vanuseklasse, tagavara ja boniteeti, kasvukohatüüpe, hooldus- ja uuendustöid, samuti piiranguid ja elupaiku.</p>
             <div className="mt-4 space-y-2">

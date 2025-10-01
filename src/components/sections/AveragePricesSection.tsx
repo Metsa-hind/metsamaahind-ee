@@ -7,6 +7,7 @@ import { YEAR_LABELS, YearRange, getYearList, sortCounties, type SortKey, HIGHES
 import GrowthRingsRadial from "@/components/visuals/GrowthRingsRadial";
 import MetricPill from "@/components/ui/MetricPill";
 import { BarChart2, TrendingUp, Maximize2 } from "lucide-react";
+import { SectionH2 } from "@/components/globals/GlobalComponents";
 
 export default function AveragePricesSection() {
   const [year, setYear] = useState<YearRange>("2024-2025");
@@ -15,7 +16,7 @@ export default function AveragePricesSection() {
   const counties = useMemo(() => sortCounties(getYearList(year), sortBy, "desc"), [year, sortBy]);
 
   return (
-    <Section className="mt-[60px]">
+    <Section id="hinnastatistika" className="mt-[42px]">
       <Container>
         
 
@@ -23,20 +24,44 @@ export default function AveragePricesSection() {
         <div className="mx-auto mt-6 grid w-full max-w-[1200px] grid-cols-1 items-end gap-4 sm:grid-cols-2">
           {/* Left column: heading copy */}
           <div className="justify-self-start text-left">
-            <h3 className="font-adcreative text-2xl text-slate-900 sm:text-3xl">Vaata metsatehingute statistikat</h3>
+            <SectionH2 className="text-left">Tehingute hinnastatistika</SectionH2>
+            
+            {/* Horizontal bulleted list with green checkmarks */}
+            <div className="mt-[10px] flex flex-wrap items-center gap-5">
+              <div className="flex items-center gap-2">
+                <svg className="h-4 w-4 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+                <span className="text-sm italic text-slate-700">Kvaliteetne metsamaterjal</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <svg className="h-4 w-4 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+                <span className="text-sm italic text-slate-700">Mets on raieküps</span>
+              </div>
+              
+              <div className="flex items-center gap-2">
+                <svg className="h-4 w-4 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
+                <span className="text-sm italic text-slate-700">Metsa tagavara vähemalt 300tm</span>
+              </div>
+            </div>
+
             <p className="mt-4 text-left text-base leading-7 text-slate-700">
               Vaadake statistikat Eestis tehtud metsatehingute kohta vahemikus 06.2023 - 06.2024 või 06.2024 - 06.2025 ning tutvuge hinnastatistikaga lähemalt.
             </p>
           </div>
 
           {/* Right column: year toggle + sort */}
-          <div className="flex items-center justify-self-end self-end gap-3">
-            <div className="inline-flex rounded-full border border-emerald-200 bg-white/80 p-1 shadow-sm">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-self-stretch sm:justify-self-end self-end gap-3">
+            <div className="w-full sm:w-auto inline-flex rounded-full border border-emerald-200 bg-white/80 p-1 shadow-sm overflow-hidden">
               {(["2023-2024", "2024-2025"] as YearRange[]).map((y) => (
                 <button
                   key={y}
                   onClick={() => setYear(y)}
-                  className={`min-w-[140px] rounded-full px-4 py-2 text-sm transition-colors ${
+                  className={`flex-1 sm:flex-none min-w-0 sm:min-w-[140px] text-ellipsis whitespace-nowrap rounded-full px-4 py-2 text-sm transition-colors ${
                     year === y ? "bg-emerald-600 text-white" : "text-emerald-800 hover:bg-emerald-50"
                   }`}
                 >
@@ -47,7 +72,7 @@ export default function AveragePricesSection() {
             <div className="flex items-center gap-2 text-sm">
               <label className="text-emerald-900">Sorteeri:</label>
               <select
-                className="rounded-lg border border-emerald-200 bg-white px-3 py-2 text-emerald-900 shadow-sm"
+                className="w-full sm:w-auto rounded-lg border border-emerald-200 bg-white px-3 py-2 text-emerald-900 shadow-sm"
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as SortKey)}
               >
@@ -77,10 +102,21 @@ export default function AveragePricesSection() {
                   const [start, end] = year.split("-");
                   const trendWord = c.yoyMedianDeltaPct >= 0 ? "tõusnud" : "langenud";
                   return (
-                    <div className="relative group inline-block">
+                  <div className="relative group inline-block">
                       <span className={`rounded-full px-3 py-1 text-sm ${c.yoyMedianDeltaPct >= 0 ? "bg-emerald-100 text-emerald-800" : "bg-amber-100 text-amber-900"}`} aria-describedby={`yoy-${c.county}`}>
-                        {sign}
-                        {c.yoyMedianDeltaPct.toFixed(1)}% {year === "2023-2024" ? "vs 24/25" : "vs 23/24"}
+                        {c.yoyMedianDeltaPct < 0 ? (
+                          <strong className="font-semibold">
+                            {sign}
+                            {c.yoyMedianDeltaPct.toFixed(1)}%
+                          </strong>
+                        ) : (
+                          <>
+                            {sign}
+                            {c.yoyMedianDeltaPct.toFixed(1)}%
+                          </>
+                        )}
+                        {" "}
+                        {year === "2023-2024" ? "vs 24/25" : "vs 23/24"}
                       </span>
                       <div
                         id={`yoy-${c.county}`}

@@ -1,12 +1,17 @@
 export const metadata = {
-  title: "Metsa hind",
+  title: "Metsa müük – täpne hinnang ja pakkumine",
   description: "Saa teada oma metsa hind kiiresti ja professionaalselt.",
+  icons: {
+    icon: [{ url: "/metsa-hind-ikoon.png?v=2", type: "image/png", sizes: "any" }],
+    shortcut: [{ url: "/metsa-hind-ikoon.png?v=2" }],
+    apple: [{ url: "/metsa-hind-ikoon.png?v=2" }],
+  },
 };
 
 import "./globals.css";
-import { Header } from "@/components/Header";
 import { Sora } from "next/font/google";
 import SiteBackground from "@/components/backgrounds/SiteBackground";
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 const adcreative = Sora({
@@ -23,7 +28,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="et" className={adcreative.variable}>
-      <body className="antialiased bg-white text-slate-900">
+      <body className="antialiased bg-white text-slate-900 overflow-x-hidden">
         <SiteBackground />
         <Header />
         {children}

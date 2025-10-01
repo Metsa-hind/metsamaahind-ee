@@ -1,70 +1,89 @@
 "use client";
-import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
 
-type QA = { q: string; a: string };
-const QAS: QA[] = [
+import Section from "@/components/primitives/Section";
+import Container from "@/components/primitives/Container";
+import { HeadingBadge, SectionH2, SectionSubheading } from "@/components/globals/GlobalComponents";
+import * as React from "react";
+
+const faqs = [
   {
-    q: "Kui kiiresti saan hinnangu?",
-    a: "Tavaliselt saadame esialgse hinnangu 24 tunni jooksul pärast päringu esitamist.",
+    q: "Mis määrab metsa hinna ja kui kiiresti see muutub?",
+    a: "Hinda kujundavad puistu liigilise koosseisu ja kvaliteedi kõrval ka tagavara (tm/ha), vanus, boniteet ning logistika. Turu nõudluse muutused (ehitus, eksport) kanduvad hindadesse kiiresti – seetõttu võrdleme alati viimase 3–6 kuu tehinguandmeid.",
   },
   {
-    q: "Millest sõltub metsa hind?",
-    a: "Peamiselt puuliikidest, tagavarast, asukohast, ligipääsust, maastikust ja metsakava andmetest.",
+    q: "Kas saan hinnangu ilma metsakavata?",
+    a: "Jah. Alustame olemasolevatest andmetest (kaugtuvastus, aerofotod, varasemad tehingud) ning täpsustame kohapealse ülevaatusega. Metsakava kiirendab protsessi ja vähendab ebakindlust, kuid ei ole kohustuslik.",
   },
   {
-    q: "Kas teete kohapealse vaatuse?",
-    a: "Jah, suuremate või keerukamate kinnistute puhul lepime kokku kohapealse ülevaatuse.",
+    q: "Kuidas erineb raieõiguse müük kinnistu müügist?",
+    a: "Kinnistu müügil läheb omandiõigus üle koos maaga. Raieõiguse müük tähendab õigust teha raiet kokkulepitud mahus ja ajavahemikus; maa jääb müüjale. Raieõiguse hinnastamisel on võtmeroll sortimendil ja töömahukusel.",
   },
   {
-    q: "Kas hinnang on siduv?",
-    a: "Näitlik hinnang ei ole pakkumine. Pakkumise vormistame pärast detailide täpsustamist.",
+    q: "Kui kaua hindamine ja tehing kestab?",
+    a: "Esialgne hinnang valmib 24–48 tunniga. Kohapealse mõõdistusega 3–7 tööpäeva. Tehingu ettevalmistus (leping, notar) võtab tavaliselt 3–10 päeva, sõltuvalt tingimustest ja dokumentidest.",
+  },
+  {
+    q: "Kuidas kujuneb lõplik ostuhind?",
+    a: "Arvesse lähevad raiemaht, sortiment, turuhindade tase, ligipääs ja tööde teostamise kulud. Esitame läbipaistva kalkulatsiooni; notaritasud ja riigilõivud arvestatakse vastavalt kokkuleppele.",
+  },
+  {
+    q: "Kas ligipääs ja boniteet mõjutavad hinda palju?",
+    a: "Jah. Hea teedevõrk ja kuiv pinnas vähendavad väljaveokulusid. Kõrgema boniteediga kasvukohad annavad parema juurdekasvu, mis tõstab metsa väärtust nii täna kui ka tulevikus.",
+  },
+  {
+    q: "Millal on müügiks parim aeg?",
+    a: "Universaalset õiget hetke pole. Hinda mõjutavad turutsüklid ja hooajalisus. Aitame ajastada tehingu vastavalt sortimendi nõudlusele ja kohapealsetele tingimustele, et tulemus oleks võimalikult hea.",
+  },
+  {
+    q: "Kuidas toimub tasumine ja raha laekumine?",
+    a: "Tehing sõlmitakse notari juures. Arveldamine toimub pangaülekandega või notari deposiidi kaudu, et mõlema poole huvid oleksid kaitstud. Raha laekub reeglina samal või järgmisel pangapäeval (sõltub pankadest), omandiõigus kantakse kinnistusraamatusse pärast notaritehingut.",
   },
 ];
 
-export default function FAQSection() {
-  const [open, setOpen] = useState<number | null>(0);
-
+export default function FaqSection() {
   return (
-    <section className="relative py-14 sm:py-18">
-      <div className="mx-auto w-full max-w-[1200px] px-4">
-        <h2 className="font-adcreative text-3xl text-slate-900">KKK — korduma kippuvad küsimused</h2>
-        <div className="mt-6 divide-y divide-emerald-100 rounded-2xl border border-emerald-100 bg-white/80 shadow-sm backdrop-blur">
-          {QAS.map((qa, i) => {
-            const isOpen = open === i;
-            return (
-              <div key={qa.q} className="p-5">
-                <button
-                  onClick={() => setOpen(isOpen ? null : i)}
-                  className="flex w-full items-center justify-between text-left"
-                >
-                  <span className="text-lg font-medium text-slate-900">{qa.q}</span>
-                  <motion.span
-                    animate={{ rotate: isOpen ? 90 : 0 }}
-                    className="ml-3 inline-block rounded-full border border-emerald-200 px-2 py-1 text-sm text-emerald-700"
-                  >
-                    →
-                  </motion.span>
-                </button>
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.25 }}
-                      className="overflow-hidden"
-                    >
-                      <div className="pt-3 text-slate-700">{qa.a}</div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            );
-          })}
+    <Section size="lg">
+      <Container>
+        <div className="mx-auto w-full max-w-[1200px] text-center">
+          <HeadingBadge label="Korduma kippuvad küsimused" />
+          <SectionH2>Metsa hinda puudutavad küsimused ja vastused</SectionH2>
+          <SectionSubheading>
+            Kiired vastused levinumatele küsimustele. Vajadusel kirjutage meile ning täpsustame teie olukorra põhjal.
+          </SectionSubheading>
         </div>
-      </div>
-    </section>
+
+        <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 gap-4 md:grid-cols-2">
+          {faqs.map((item, i) => (
+            <details key={i} className="group rounded-xl border border-emerald-100 bg-white/80 p-4 shadow-sm open:shadow-md">
+              <summary className="flex cursor-pointer list-none items-start justify-between gap-3 text-left">
+                <span className="font-semibold text-emerald-900">{item.q}</span>
+                <svg className="mt-1 h-5 w-5 text-emerald-700 transition-transform duration-200 group-open:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </summary>
+              <p className="mt-3 text-sm leading-6 text-emerald-900/90">{item.a}</p>
+            </details>
+          ))}
+        </div>
+
+        {/* JSON-LD FAQ schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: faqs.map((f) => ({
+                '@type': 'Question',
+                name: f.q,
+                acceptedAnswer: { '@type': 'Answer', text: f.a },
+              })),
+            }),
+          }}
+        />
+      </Container>
+    </Section>
   );
 }
+
 

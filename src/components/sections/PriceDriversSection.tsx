@@ -110,76 +110,16 @@ export default function PriceDriversSection() {
             Mis on metsa hinna peamised mõjutajad
           </h2>
            <p className="mt-4 text-base leading-7 text-slate-700 sm:text-lg">
-             Kogenud metsaomanikud teavad, et õige müügiaeg võib tuua märkimisväärselt rohkem tulu. Samas on oluline mõista, et ükski mets ei kasva väärtuses igavesti - vanemad puistud muutuvad haiguste ja kahjurite suhtes haavatavamaks, mistõttu õigeaegne raie on mõistlik. Metsamajandamiskava annab hea ülevaate puistu tagavarast ja aitab arvutada iga hektari hinnangulise väärtuse, samuti planeerida metsamajanduslikke töid.
+             Kogenud metsaomanikud teavad, et õige müügiaeg võib tuua märkimisväärselt rohkem tulu. Samas on oluline mõista, et ükski mets ei kasva väärtuses igavesti – vanemad puistud muutuvad haiguste ja kahjurite suhtes haavatavamaks, mistõttu õigeaegne raie on mõistlik. Metsa hind sõltub eeskätt puiduturu olukorrast ja kokkuostuhindadest. Lisaks mõjutavad metsa hinda ka muud tingimuslikud faktorit, mis on reeglina iga kinnistu puhul erinevad. Tutvuge metsa hinda enim mõjutavate faktoritega.
            </p>
         </div>
 
-        {/* Image cards */}
-        <div className="mx-auto flex w-[80%] gap-4 mt-6">
-          {/* Card 1 */}
-          <div className="flex-1 rounded-3xl border border-emerald-100 bg-white/70 p-3 shadow-sm backdrop-blur">
-            <div className="group relative aspect-video overflow-hidden rounded-2xl ring-1 ring-emerald-200/50">
-              <motion.div
-                className="absolute inset-0"
-                initial={{ scale: 1.02 }}
-                whileHover={{ scale: 1.07, y: -4 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
-              >
-                <Image
-                  src="/metsa-hindamine-1.jpg"
-                  alt="Metsa hindamine"
-                  width={400}
-                  height={225}
-                  className="h-full w-full object-cover"
-                  priority
-                />
-              </motion.div>
-              <motion.div
-                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-emerald-900/20 via-transparent to-transparent opacity-0 group-hover:opacity-100"
-                transition={{ duration: 0.3 }}
-              />
-              <div className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-emerald-400/25 blur-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-            </div>
-            <div className="mt-2 text-center text-xs text-slate-600">Looduslikult kasvanud mets</div>
-          </div>
-
-          {/* Card 2 */}
-          <div className="flex-1 rounded-3xl border border-emerald-100 bg-white/70 p-3 shadow-sm backdrop-blur">
-            <div className="group relative aspect-video overflow-hidden rounded-2xl ring-1 ring-emerald-200/50">
-              <motion.div
-                className="absolute inset-0"
-                initial={{ scale: 1.02 }}
-                whileHover={{ scale: 1.07, y: -4 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
-              >
-                <Image
-                  src="/metsamaa-hind-1.jpg"
-                  alt="Metsamaa hind"
-                  width={400}
-                  height={225}
-                  className="h-full w-full object-cover"
-                  priority
-                />
-              </motion.div>
-              <motion.div
-                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-emerald-900/20 via-transparent to-transparent opacity-0 group-hover:opacity-100"
-                transition={{ duration: 0.3 }}
-              />
-              <div className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full bg-emerald-400/25 blur-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-            </div>
-            <div className="mt-2 text-center text-xs text-slate-600">Majandatud männimets</div>
-          </div>
+        {/* Removed image cards and descriptive paragraph per request */}
+        <div className="mx-auto max-w-4xl text-center mt-6">
+          <h5 className="mt-6 text-xl font-semibold text-black">
+            Metsamaa hind koosneb peamiselt nende asjaolude põhjal:
+          </h5>
         </div>
-
-         <div className="mx-auto max-w-4xl text-center mt-6">
-           <p className="text-base leading-7 text-slate-700 sm:text-lg">
-             Metsa hind sõltub eeskätt puiduturu olukorrast ja kokkuostuhindadest. Lisaks mõjutavad metsa hinda ka muud tingimuslikud faktorit, mis on reeglina iga kinnistu puhul erinevad. Tutvuge metsa hinda enim mõjutavate faktoritega.
-           </p>
-           
-           <h5 className="mt-6 text-xl font-semibold text-black">
-             Metsamaa hind koosneb peamiselt nende asjaolude põhjal:
-           </h5>
-         </div>
 
         {/* Chart-like cards */}
         <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
