@@ -11,6 +11,7 @@ import PriceFormationSection from "@/components/sections/PriceFormationSection";
 import CtaContactSection from "@/components/sections/CtaContactSection";
 import FaqSection from "@/components/sections/FAQSection";
  
+ 
 
 export const metadata = {
   title: "Metsamaa Hind kuni 35 000 eurot hektari eest",

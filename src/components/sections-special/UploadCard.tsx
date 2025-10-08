@@ -62,7 +62,6 @@ export default function UploadCard() {
       setIsSubmitting(false);
     }
   };
-
   const faqs = [
     {
       q: "Mida teha kui mul pole metsamajandamiskava?",

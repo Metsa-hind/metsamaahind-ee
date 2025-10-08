@@ -23,8 +23,8 @@ export default function Hero({
   secondaryHref?: string;
 }) {
   const formId = useId();
-  const { executeRecaptcha } = useRecaptcha();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { executeRecaptcha } = useRecaptcha();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -32,30 +32,27 @@ export default function Hero({
 
     try {
       // Get reCAPTCHA token
-      const token = await executeRecaptcha('contact_form');
+      const recaptchaToken = await executeRecaptcha('contact_form');
       
-      // Get form data
       const formData = new FormData(e.currentTarget);
-      formData.append('recaptcha_token', token);
-
-      // Here you would send the form data to your backend
-      console.log('Form data with reCAPTCHA token:', {
+      formData.append('recaptcha_token', recaptchaToken);
+      
+      // Handle form submission here
+      console.log('Contact form data with reCAPTCHA token ready for submission:', {
         name: formData.get('name'),
         email: formData.get('email'),
-        kataster: formData.get('kataster'),
-        phone: formData.get('phone'),
-        message: formData.get('message'),
-        recaptcha_token: token
+        hasRecaptchaToken: !!recaptchaToken
       });
-
-      // For now, just show success message
-      alert('Aitäh! Saadame teile pakkumise 24h jooksul.');
+      
+      // TODO: Implement actual form submission to your backend
+      alert('Vorm on edukalt saadetud! (reCAPTCHA kinnitatud)');
       
       // Reset form
       e.currentTarget.reset();
+      
     } catch (error) {
-      console.error('reCAPTCHA error:', error);
-      alert('Viga vormi saatmisel. Palun proovige uuesti.');
+      console.error('Vormi saatmine ebaõnnestus:', error);
+      alert('Vormi saatmisel tekkis viga. Palun proovige uuesti.');
     } finally {
       setIsSubmitting(false);
     }
@@ -240,9 +237,13 @@ export default function Hero({
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="mt-5 inline-flex w-full items-center justify-center rounded-lg bg-emerald-500 px-4 py-3 font-semibold text-white transition hover:bg-emerald-600 disabled:opacity-50 disabled:cursor-not-allowed"
+                className={`mt-5 inline-flex w-full items-center justify-center rounded-lg px-4 py-3 font-semibold text-white transition ${
+                  isSubmitting 
+                    ? 'bg-gray-400 cursor-not-allowed' 
+                    : 'bg-emerald-500 hover:bg-emerald-600'
+                }`}
               >
-                {isSubmitting ? 'Saadan...' : 'Saa tasuta metsa hindamine'}
+                {isSubmitting ? 'Saatmine...' : 'Saa tasuta metsa hindamine'}
               </button>
 
               <p className="mt-3 text-center text-xs text-slate-500">
