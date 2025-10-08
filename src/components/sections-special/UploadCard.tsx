@@ -11,6 +11,9 @@ import { useRecaptcha } from "@/hooks/useRecaptcha";
 
 export default function UploadCard() {
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const nameRef = useRef<HTMLInputElement | null>(null);
+  const emailRef = useRef<HTMLInputElement | null>(null);
+  const messageRef = useRef<HTMLTextAreaElement | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
   const [drag, setDrag] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -28,26 +31,35 @@ export default function UploadCard() {
     setIsSubmitting(true);
 
     try {
-      // Create FormData and add form values manually (skip reCAPTCHA for testing)
+      // Get reCAPTCHA token
+      const recaptchaToken = await executeRecaptcha('upload_form');
+      
+      if (!recaptchaToken) {
+        alert('reCAPTCHA verification failed. Please try again.');
+        return;
+      }
+      
+      // Create FormData and add form values using refs
       const formData = new FormData();
-      const form = e.currentTarget;
       
-      // Get form field values
-      const nameInput = form.querySelector('input[name="name"]') as HTMLInputElement;
-      const emailInput = form.querySelector('input[name="email"]') as HTMLInputElement;
-      const messageInput = form.querySelector('textarea[name="message"]') as HTMLTextAreaElement;
+      // Get form field values from refs
+      const name = nameRef.current?.value || '';
+      const email = emailRef.current?.value || '';
+      const message = messageRef.current?.value || '';
       
-      if (nameInput?.value) formData.append('name', nameInput.value);
-      if (emailInput?.value) formData.append('email', emailInput.value);
-      if (messageInput?.value) formData.append('message', messageInput.value);
+      if (name) formData.append('name', name);
+      if (email) formData.append('email', email);
+      if (message) formData.append('message', message);
+      
+      formData.append('recaptcha_token', recaptchaToken);
       
       // Add the file to form data if available
       if (inputRef.current?.files?.[0]) {
         formData.append('metsakava_file', inputRef.current.files[0]);
       }
       
-      // Submit to temporary PHP endpoint (no reCAPTCHA for testing)
-      const response = await fetch('/api/upload-temp.php', {
+      // Submit to PHP endpoint
+      const response = await fetch('/api/upload.php', {
         method: 'POST',
         body: formData,
       });
@@ -61,7 +73,9 @@ export default function UploadCard() {
         if (inputRef.current) {
           inputRef.current.value = '';
         }
-        e.currentTarget.reset();
+        if (nameRef.current) nameRef.current.value = '';
+        if (emailRef.current) emailRef.current.value = '';
+        if (messageRef.current) messageRef.current.value = '';
       } else {
         alert(result.error || 'Vormi saatmisel tekkis viga. Palun proovige uuesti.');
       }
@@ -150,6 +164,7 @@ export default function UploadCard() {
                 <div className="mt-[8px] text-[18px] font-normal text-emerald-900">Teie kontaktandmed</div>
                 <div className="mt-[15px] space-y-2 text-left">
                 <input
+                  ref={nameRef}
                   type="text"
                   name="name"
                   placeholder="Teie nimi*"
@@ -157,6 +172,7 @@ export default function UploadCard() {
                   className="h-11 w-full rounded-lg border border-slate-200 bg-white px-3 text-[14px] font-medium outline-none ring-emerald-300/40 placeholder-slate-500 focus:ring-4"
                 />
                 <input
+                  ref={emailRef}
                   type="email"
                   name="email"
                   placeholder="Teie email*"
@@ -164,6 +180,7 @@ export default function UploadCard() {
                   className="h-11 w-full rounded-lg border border-slate-200 bg-white px-3 text-[14px] font-medium outline-none ring-emerald-300/40 placeholder-slate-500 focus:ring-4"
                 />
                 <textarea
+                  ref={messageRef}
                   rows={2}
                   name="message"
                   placeholder="Lisainfo"

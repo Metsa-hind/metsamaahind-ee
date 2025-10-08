@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useId, useState } from "react";
+import { useId, useState, useEffect, useRef } from "react";
 import AvatarStack from "@/components/ui/AvatarStack";
 import { useRecaptcha } from "@/hooks/useRecaptcha";
 
@@ -24,6 +24,10 @@ export default function Hero({
   secondaryHref?: string;
 }) {
   const formId = useId();
+  const nameRef = useRef<HTMLInputElement | null>(null);
+  const phoneRef = useRef<HTMLInputElement | null>(null);
+  const emailRef = useRef<HTMLInputElement | null>(null);
+  const messageRef = useRef<HTMLTextAreaElement | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { executeRecaptcha } = useRecaptcha();
 
@@ -40,20 +44,19 @@ export default function Hero({
         return;
       }
       
-      // Create FormData safely
+      // Create FormData using refs
       const formData = new FormData();
-      const form = e.currentTarget;
       
-      // Get form field values
-      const nameInput = form.querySelector('input[name="name"]') as HTMLInputElement;
-      const phoneInput = form.querySelector('input[name="phone"]') as HTMLInputElement;
-      const emailInput = form.querySelector('input[name="email"]') as HTMLInputElement;
-      const messageInput = form.querySelector('textarea[name="message"]') as HTMLTextAreaElement;
+      // Get form field values from refs
+      const name = nameRef.current?.value || '';
+      const phone = phoneRef.current?.value || '';
+      const email = emailRef.current?.value || '';
+      const message = messageRef.current?.value || '';
       
-      if (nameInput?.value) formData.append('name', nameInput.value);
-      if (phoneInput?.value) formData.append('phone', phoneInput.value);
-      if (emailInput?.value) formData.append('email', emailInput.value);
-      if (messageInput?.value) formData.append('message', messageInput.value);
+      if (name) formData.append('name', name);
+      if (phone) formData.append('phone', phone);
+      if (email) formData.append('email', email);
+      if (message) formData.append('message', message);
       
       formData.append('recaptcha_token', recaptchaToken);
       
@@ -68,7 +71,10 @@ export default function Hero({
       if (response.ok) {
         alert(result.message + (result.debug ? '\n\nDebug: ' + result.debug : ''));
         // Reset form on success
-        e.currentTarget.reset();
+        if (nameRef.current) nameRef.current.value = '';
+        if (phoneRef.current) phoneRef.current.value = '';
+        if (emailRef.current) emailRef.current.value = '';
+        if (messageRef.current) messageRef.current.value = '';
       } else {
         alert((result.error || 'Vormi saatmisel tekkis viga. Palun proovige uuesti.') + (result.debug ? '\n\nDebug: ' + result.debug : ''));
       }
@@ -210,6 +216,7 @@ export default function Hero({
               <div className="mt-5 grid grid-cols-1 gap-4">
                 <Field label="Nimi">
                   <input
+                    ref={nameRef}
                     required
                     name="name"
                     autoComplete="name"
@@ -220,6 +227,7 @@ export default function Hero({
 
                 <Field label="E-mail">
                   <input
+                    ref={emailRef}
                     required
                     type="email"
                     name="email"
@@ -239,6 +247,7 @@ export default function Hero({
 
                 <Field label="Telefon (valikuline)">
                   <input
+                    ref={phoneRef}
                     type="tel"
                     name="phone"
                     autoComplete="tel"
@@ -249,6 +258,7 @@ export default function Hero({
 
                 <Field label="Lisainfo (valikuline)">
                   <textarea
+                    ref={messageRef}
                     name="message"
                     rows={3}
                     className="w-full rounded-lg border border-slate-200 px-3 py-2 outline-none ring-emerald-300/40 focus:ring-4"
