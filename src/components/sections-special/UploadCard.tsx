@@ -28,20 +28,19 @@ export default function UploadCard() {
     setIsSubmitting(true);
 
     try {
-      // Create FormData from form
-      const formData = new FormData(e.currentTarget);
+      // Get reCAPTCHA token
+      const recaptchaToken = await executeRecaptcha('upload_form');
       
-      // Skip reCAPTCHA for debugging
-      // const recaptchaToken = await executeRecaptcha('upload_form');
-      // formData.append('recaptcha_token', recaptchaToken);
+      const formData = new FormData(e.currentTarget);
+      formData.append('recaptcha_token', recaptchaToken);
       
       // Add the file to form data if available
       if (inputRef.current?.files?.[0]) {
         formData.append('metsakava_file', inputRef.current.files[0]);
       }
       
-      // Submit to test PHP endpoint
-      const response = await fetch('/api/upload-test.php', {
+      // Submit to PHP endpoint
+      const response = await fetch('/api/upload.php', {
         method: 'POST',
         body: formData,
       });

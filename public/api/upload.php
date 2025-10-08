@@ -115,7 +115,7 @@ try {
     $emailContent .= "Saadetud: " . date('d.m.Y H:i:s') . "\n";
 
     // Send email
-    $to = 'info@erametsaselts.ee';
+    $to = 'info@metsamaahind.ee';
     $subject = 'Metsakava hindamine - metsamaahind.ee';
     $headers = "From: " . $email . "\r\n";
     $headers .= "Reply-To: " . $email . "\r\n";
