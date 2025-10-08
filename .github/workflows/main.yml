@@ -27,7 +27,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: production-files
-          path: ./dist
+          path: ./out
   
   deploy:
     name: Deploy to Server
@@ -43,7 +43,7 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: production-files
-        path: ./dist
+        path: ./out
 
     - name: Set up SSH
       run: |
@@ -56,4 +56,4 @@ jobs:
     - name: Copy files to server
       run: |
         # IMPORTANT: Replace /dataXX/ with the correct value from your Zone.ee control panel!
-        rsync -vrm --delete -e "ssh -o StrictHostKeyChecking=yes -o UserKnownHostsFile=~/.ssh/known_hosts" ./dist/ ${{ secrets.SSH_LOGIN_CREDS }}:/dataXX/virt79242/metsamaahind.ee
+        rsync -vrm --delete -e "ssh -o StrictHostKeyChecking=yes -o UserKnownHostsFile=~/.ssh/known_hosts" ./out/ ${{ secrets.SSH_LOGIN_CREDS }}:/dataXX/virt79242/metsamaahind.ee
