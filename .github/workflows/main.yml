@@ -57,5 +57,4 @@ jobs:
     
     - name: Copy files to server
       run: |
-        # IMPORTANT: Replace /dataXX/ with the correct value from your Zone.ee control panel!
-        rsync -vrm --delete -e "ssh -o StrictHostKeyChecking=accept-new -o UserKnownHostsFile=~/.ssh/known_hosts" ./out/ ${{ secrets.SSH_LOGIN_CREDS }}:/dataXX/virt79242/metsamaahind.ee
+        rsync -vrm --delete -e "ssh -o StrictHostKeyChecking=accept-new -o UserKnownHostsFile=~/.ssh/known_hosts" ./out/ ${{ secrets.SSH_LOGIN_CREDS }}:/data01/virt79242/domeenid/www.erametsaselts.ee/metsamaahind.ee
