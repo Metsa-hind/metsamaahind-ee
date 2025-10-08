@@ -10,6 +10,7 @@ export const metadata = {
 
 import "./globals.css";
 import { Sora } from "next/font/google";
+import Script from "next/script";
 import SiteBackground from "@/components/backgrounds/SiteBackground";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -28,14 +29,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="et" className={adcreative.variable}>
-      <head>
-        <script
-          src="https://www.google.com/recaptcha/api.js?render=6Lc9OOIrAAAAABtQtpV7Fbkck2fu81QxfbHFFZ1F"
-          async
-          defer
-        />
-      </head>
       <body className="antialiased bg-white text-slate-900 overflow-x-hidden">
+        <Script
+          src="https://www.google.com/recaptcha/api.js?render=6Lc9OOIrAAAAABtQtpV7Fbkck2fu81QxfbHFFZ1F"
+          strategy="afterInteractive"
+        />
         <SiteBackground />
         <Header />
         {children}

@@ -8,22 +8,22 @@ import { Container } from "@/components/primitives/Container";
 type Item = { label: string; href: string };
 
 const METSAMAAD: Item[] = [
-  { label: "Metsa müük", href: "https://metsamaahind.ee/metsa-muuk/" },
-  { label: "Metsa hind", href: "https://metsamaahind.ee" },
-  { label: "Metsa istutamine", href: "https://metsamaahind.ee/metsa-istutamine/" },
+  { label: "Metsa müük", href: "/metsa-muuk/" },
+  { label: "Metsa hind", href: "/" },
+  { label: "Metsa istutamine", href: "/metsa-istutamine/" },
 ];
 
 const METSARAIE: Item[] = [
-  { label: "Raieõiguse müük", href: "https://metsamaahind.ee/raieoiguse-muuk/" },
-  { label: "Raieõiguse hind", href: "https://metsamaahind.ee/raieoiguse-hind/" },
-  { label: "Metsateatis", href: "https://metsamaahind.ee/metsateatis/" },
-  { label: "Hooldusraied", href: "https://metsamaahind.ee/hooldusraied/" },
+  { label: "Raieõiguse müük", href: "/raieoiguse-muuk/" },
+  { label: "Raieõiguse hind", href: "/raieoiguse-hind/" },
+  { label: "Metsateatis", href: "/metsateatis/" },
+  { label: "Hooldusraied", href: "/hooldusraied/" },
 ];
 
 const POLLUMAA: Item[] = [
-  { label: "Põllumaa ost", href: "https://metsamaahind.ee/pollumaa-ost/" },
-  { label: "Põllumaa müük", href: "https://metsamaahind.ee/pollumaa-muuk/" },
-  { label: "Põllumaa hind", href: "https://metsamaahind.ee/pollumaa-hind/" },
+  { label: "Põllumaa ost", href: "/pollumaa-ost/" },
+  { label: "Põllumaa müük", href: "/pollumaa-muuk/" },
+  { label: "Põllumaa hind", href: "/pollumaa-hind/" },
 ];
 
 function Dropdown({ label, items, Icon }: { label: string; items: Item[]; Icon: any }) {
@@ -62,13 +62,13 @@ export function Header() {
         <div className="flex items-center justify-between">
           {/* Left cluster: logo + nav */}
           <div className="flex items-center gap-3 lg:gap-5">
-            <a href="https://metsamaahind.ee" className="inline-flex items-center gap-2">
+            <a href="/" className="inline-flex items-center gap-2">
               <Image src="/metsa-hind-ikoon.png" alt="Metsa Hind" width={36} height={36} className="h-9 w-9" />
             </a>
 
             {/* Mobile-only CTA next to logo */}
             <a
-              href="https://metsamaahind.ee/kontakt/"
+              href="/kontakt/"
               className="lg:hidden inline-flex items-center rounded-lg bg-emerald-100 px-3 py-1.5 text-sm font-semibold text-emerald-800"
             >
               Kontaktivorm
@@ -76,7 +76,7 @@ export function Header() {
 
             {/* Desktop nav next to logo */}
             <nav className="hidden lg:flex items-center gap-1">
-            <a href="https://metsamaahind.ee" className="rounded-lg px-3 py-2 text-sm font-medium text-emerald-900 hover:bg-emerald-50">
+            <a href="/" className="rounded-lg px-3 py-2 text-sm font-medium text-emerald-900 hover:bg-emerald-50">
                 Avaleht
             </a>
             <Dropdown label="Metsamaa" items={METSAMAAD} Icon={Trees} />
@@ -92,7 +92,7 @@ export function Header() {
               <span>info@metsamaahind.ee</span>
             </a>
             <a
-              href="https://metsamaahind.ee/kontakt/"
+              href="/kontakt/"
               className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-5 py-2.5 font-semibold text-white shadow transition-colors hover:bg-emerald-700"
             >
                 KONTAKTIVORM
@@ -134,7 +134,7 @@ export function Header() {
                   </div>
 
                   <nav className="mt-4 space-y-5 text-emerald-900">
-              <a href="https://metsamaahind.ee" className="block rounded-lg px-3 py-2 text-sm hover:bg-emerald-50" onClick={() => setMobileOpen(false)}>
+              <a href="/" className="block rounded-lg px-3 py-2 text-sm hover:bg-emerald-50" onClick={() => setMobileOpen(false)}>
                 Avaleht
               </a>
 
@@ -201,7 +201,7 @@ export function Header() {
                 )}
                     </div>
 
-              <a href="https://metsamaahind.ee/kontakt/" className="block rounded-lg px-3 py-2 text-sm hover:bg-emerald-50" onClick={() => setMobileOpen(false)}>
+              <a href="/kontakt/" className="block rounded-lg px-3 py-2 text-sm hover:bg-emerald-50" onClick={() => setMobileOpen(false)}>
                 Kontakt
               </a>
             </nav>

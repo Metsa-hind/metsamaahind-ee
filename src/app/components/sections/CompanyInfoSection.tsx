@@ -54,7 +54,7 @@ export default function CompanyInfoSection() {
                 <li className="flex gap-2"><CheckCircle2 className="mt-0.5 h-4 w-4 text-black" aria-hidden /> <span className="italic">Isikupärastatud lahendused eri olukordadele</span></li>
               </ul>
               <div className="mt-[30px] flex flex-wrap gap-3">
-                <a href="https://metsamaahind.ee/kontakt/" className="mt-[10px] inline-flex items-center justify-center rounded-lg border-[0.5px] border-emerald-700 bg-emerald-600/10 px-[38px] py-[6.8px] text-[15px] font-semibold text-emerald-700 transition-colors hover:bg-emerald-600 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300">Arvuta metsamaa hind</a>
+                <a href="/kontakt/" className="mt-[10px] inline-flex items-center justify-center rounded-lg border-[0.5px] border-emerald-700 bg-emerald-600/10 px-[38px] py-[6.8px] text-[15px] font-semibold text-emerald-700 transition-colors hover:bg-emerald-600 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300">Arvuta metsamaa hind</a>
               </div>
               {/* CTA removed per request */}
             </div>
@@ -189,7 +189,7 @@ export default function CompanyInfoSection() {
                 </div>
                 <div className="-mt-[10px] grid gap-2 text-[16px] text-gray-700">
                   <a
-                    href="https://metsamaahind.ee/kontakt/"
+                    href="/kontakt/"
                     className="mx-auto mt-[15px] mb-2 inline-flex items-center justify-center rounded-lg border border-emerald-300/60 bg-transparent px-[38px] py-[6.8px] text-[15px] font-semibold text-emerald-700 hover:bg-emerald-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"
                   >
                     Kontakt

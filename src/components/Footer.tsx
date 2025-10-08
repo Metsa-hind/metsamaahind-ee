@@ -52,7 +52,7 @@ export default function Footer() {
                   Navigatsioon
                 </h4>
                 <ul className="mt-3 space-y-2 text-sm">
-                  {[{href:"https://metsamaahind.ee",label:"Avaleht"},{href:"https://metsamaahind.ee/about/",label:"Ettevõttest"},{href:"https://metsamaahind.ee/kontakt/",label:"Kontakt"}] .map(i=> (
+                  {[{href:"/",label:"Avaleht"},{href:"/about/",label:"Ettevõttest"},{href:"/kontakt/",label:"Kontakt"}] .map(i=> (
                     <li key={i.href}>
                       <Link href={i.href} className="text-emerald-900/85 hover:text-emerald-900 hover:underline underline-offset-4">{i.label}</Link>
                     </li>

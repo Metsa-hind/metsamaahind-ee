@@ -31,7 +31,7 @@ export default function Page() {
         subtitle="Kui soovite teada, mis on teie metsamaa hind, olete õiges kohas. Saatke meile päring või tutvuge metsa hinnastatistikaga. Metsakava üleslaadimisel saame teha väga täpse hindamise kiirelt ja teie jaoks tasuta."
         // Homepage overrides: hide first CTA and retarget the second
         hidePrimaryCta
-        secondaryHref="https://metsamaahind.ee/#hinnastatistika"
+        secondaryHref="/#hinnastatistika"
       />
       {/* Company info second */}
       <div className="my-[60px]">
