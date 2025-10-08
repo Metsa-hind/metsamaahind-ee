@@ -16,8 +16,9 @@ export default function AveragePricesSection() {
   const counties = useMemo(() => sortCounties(getYearList(year), sortBy, "desc"), [year, sortBy]);
 
   return (
-    <Section id="hinnastatistika" className="mt-[42px]">
-      <Container>
+    <Section className="mt-[42px]">
+      <div id="hinnastatistika">
+        <Container>
         
 
         {/* Controls */}
@@ -159,7 +160,8 @@ export default function AveragePricesSection() {
           ))}
         </div>
 
-      </Container>
+        </Container>
+      </div>
     </Section>
   );
 }

@@ -9,7 +9,7 @@ import UploadCard from "@/components/sections-special/UploadCard";
 import ReviewsSection from "@/components/sections/ReviewsSection";
 import PriceFormationSection from "@/components/sections/PriceFormationSection";
 import CtaContactSection from "@/components/sections/CtaContactSection";
-import FaqSection from "@/components/sections/FaqSection";
+import FaqSection from "@/components/sections/FAQSection";
  
 
 export const metadata = {

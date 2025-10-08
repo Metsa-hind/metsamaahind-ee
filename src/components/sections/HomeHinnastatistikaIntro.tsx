@@ -3,9 +3,10 @@ import Container from "@/components/primitives/Container";
 
 export default function HomeHinnastatistikaIntro() {
   return (
-    <Section id="hinnastatistika">
-      <Container>
-        <div className="mx-auto w-full max-w-[1200px] text-left">
+    <Section>
+      <div id="hinnastatistika">
+        <Container>
+          <div className="mx-auto w-full max-w-[1200px] text-left">
           <h2 className="mt-0 font-adcreative text-3xl font-semibold text-emerald-950 sm:text-4xl">
             Tehingute hinnastatistika
           </h2>
@@ -17,8 +18,9 @@ export default function HomeHinnastatistikaIntro() {
           <p className="mt-4 max-w-[70ch] text-[15px] leading-7 text-emerald-900/90">
             Vaadake statistikat Eestis tehtud metsatehingute kohta vahemikus 06.2023 – 06.2024 või 06.2024 – 06.2025 ning tutvuge hinnastatistikaga lähemalt.
           </p>
-        </div>
-      </Container>
+          </div>
+        </Container>
+      </div>
     </Section>
   );
 }
