@@ -28,6 +28,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="et" className={adcreative.variable}>
+      <head>
+        <script
+          src="https://www.google.com/recaptcha/api.js?render=6Lc9OOIrAAAAABtQtpV7Fbkck2fu81QxfbHFFZ1F"
+          async
+          defer
+        />
+      </head>
       <body className="antialiased bg-white text-slate-900 overflow-x-hidden">
         <SiteBackground />
         <Header />

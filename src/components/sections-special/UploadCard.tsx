@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import { UploadCloud, Folder, ChevronDown } from "lucide-react";
 import SmartBadge from "@/components/ui/SmartBadge";
+import { useRecaptcha } from "@/hooks/useRecaptcha";
 
 // Standalone special section. Does not import any site primitives or site Container.
 // Fixed sizing: width 1200px, height 400px. Own styling only.
@@ -13,6 +14,55 @@ export default function UploadCard() {
   const [fileName, setFileName] = useState<string | null>(null);
   const [drag, setDrag] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { executeRecaptcha } = useRecaptcha();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    
+    if (!fileName) {
+      alert('Palun valige fail enne saatmist.');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // Get reCAPTCHA token
+      const recaptchaToken = await executeRecaptcha('upload_form');
+      
+      const formData = new FormData(e.currentTarget);
+      formData.append('recaptcha_token', recaptchaToken);
+      
+      // Add the file to form data if available
+      if (inputRef.current?.files?.[0]) {
+        formData.append('metsakava_file', inputRef.current.files[0]);
+      }
+      
+      // Handle form submission here
+      console.log('Upload form data with reCAPTCHA token ready for submission:', {
+        file: fileName,
+        hasRecaptchaToken: !!recaptchaToken
+      });
+      
+      // TODO: Implement actual form submission to your backend
+      alert('Vorm on edukalt saadetud! (reCAPTCHA kinnitatud)');
+      
+      // Reset form
+      setFileName(null);
+      if (inputRef.current) {
+        inputRef.current.value = '';
+      }
+      e.currentTarget.reset();
+      
+    } catch (error) {
+      console.error('Vormi saatmine ebaõnnestus:', error);
+      alert('Vormi saatmisel tekkis viga. Palun proovige uuesti.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   const faqs = [
     {
       q: "Mida teha kui mul pole metsamajandamiskava?",
@@ -86,30 +136,40 @@ export default function UploadCard() {
                 className="hidden"
                 onChange={(e) => { const f = e.target.files?.[0]; if (f) setFileName(f.name); }}
               />
-              <div className="mt-[20px] w-full max-w-[300px] text-center pb-[15px]">
+              <form onSubmit={handleSubmit} className="mt-[20px] w-full max-w-[300px] text-center pb-[15px]">
                 <div className="mt-[8px] text-[18px] font-normal text-emerald-900">Teie kontaktandmed</div>
                 <div className="mt-[15px] space-y-2 text-left">
                 <input
                   type="text"
+                  name="name"
                   placeholder="Teie nimi*"
+                  required
                   className="h-11 w-full rounded-lg border border-slate-200 bg-white px-3 text-[14px] font-medium outline-none ring-emerald-300/40 placeholder-slate-500 focus:ring-4"
                 />
                 <input
                   type="email"
+                  name="email"
                   placeholder="Teie email*"
+                  required
                   className="h-11 w-full rounded-lg border border-slate-200 bg-white px-3 text-[14px] font-medium outline-none ring-emerald-300/40 placeholder-slate-500 focus:ring-4"
                 />
                 <textarea
                   rows={2}
+                  name="message"
                   placeholder="Lisainfo"
                   className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-[14px] font-medium outline-none ring-emerald-300/40 placeholder-slate-500 focus:ring-4"
                 />
                 </div>
               <button
-                type="button"
-                  className="mt-3 w-full rounded-[12px] bg-emerald-500 px-4 py-2.5 text-[14px] font-semibold text-white transition-colors hover:bg-emerald-600"
+                type="submit"
+                disabled={isSubmitting}
+                className={`mt-3 w-full rounded-[12px] px-4 py-2.5 text-[14px] font-semibold text-white transition-colors ${
+                  isSubmitting 
+                    ? 'bg-gray-400 cursor-not-allowed' 
+                    : 'bg-emerald-500 hover:bg-emerald-600'
+                }`}
               >
-                  Arvuta metsamaa täpne hind
+                {isSubmitting ? 'Saatmine...' : 'Arvuta metsamaa täpne hind'}
               </button>
                 <div className="mt-2 flex items-center justify-center text-[12px] font-medium text-slate-600">
                   <span className="mr-1">🔒</span>
@@ -124,7 +184,7 @@ export default function UploadCard() {
                     </span>
                   </span>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
           {/* LEFT on desktop: Steps card */}

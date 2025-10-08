@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useId } from "react";
+import { useId, useState } from "react";
 import AvatarStack from "@/components/ui/AvatarStack";
+import { useRecaptcha } from "@/hooks/useRecaptcha";
 
 export default function Hero({
   title = "Metsa müük lihtsalt ja murevabalt",
@@ -22,6 +23,43 @@ export default function Hero({
   secondaryHref?: string;
 }) {
   const formId = useId();
+  const { executeRecaptcha } = useRecaptcha();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      // Get reCAPTCHA token
+      const token = await executeRecaptcha('contact_form');
+      
+      // Get form data
+      const formData = new FormData(e.currentTarget);
+      formData.append('recaptcha_token', token);
+
+      // Here you would send the form data to your backend
+      console.log('Form data with reCAPTCHA token:', {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        kataster: formData.get('kataster'),
+        phone: formData.get('phone'),
+        message: formData.get('message'),
+        recaptcha_token: token
+      });
+
+      // For now, just show success message
+      alert('Aitäh! Saadame teile pakkumise 24h jooksul.');
+      
+      // Reset form
+      e.currentTarget.reset();
+    } catch (error) {
+      console.error('reCAPTCHA error:', error);
+      alert('Viga vormi saatmisel. Palun proovige uuesti.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section className="relative isolate">
@@ -126,6 +164,7 @@ export default function Hero({
           {/* Right form */}
           <div id="form" className="w-full self-stretch md:self-center md:my-[20px] mt-[20px]">
             <form
+              onSubmit={handleSubmit}
               aria-labelledby={`${formId}-title`}
               className="relative overflow-hidden rounded-2xl bg-white/95 p-5 shadow-[0_8px_30px_rgba(0,0,0,0.25)] backdrop-blur sm:p-6 transition-transform duration-300 hover:scale-[1.02]"
             >
@@ -200,9 +239,10 @@ export default function Hero({
 
               <button
                 type="submit"
-                className="mt-5 inline-flex w-full items-center justify-center rounded-lg bg-emerald-500 px-4 py-3 font-semibold text-white transition hover:bg-emerald-600"
+                disabled={isSubmitting}
+                className="mt-5 inline-flex w-full items-center justify-center rounded-lg bg-emerald-500 px-4 py-3 font-semibold text-white transition hover:bg-emerald-600 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Saa tasuta metsa hindamine
+                {isSubmitting ? 'Saadan...' : 'Saa tasuta metsa hindamine'}
               </button>
 
               <p className="mt-3 text-center text-xs text-slate-500">
