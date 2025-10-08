@@ -102,7 +102,7 @@ try {
     $emailContent .= "Saadetud: " . date('d.m.Y H:i:s') . "\n";
 
     // Send email with better headers for Zone.ee
-    $to = 'karlsimmer@gmail.com';
+    $to = 'info@metsamaahind.ee';
     $subject = 'Metsakava hindamine - metsamaahind.ee';
     $headers = "From: noreply@zoneas.eu\r\n";
     $headers .= "Reply-To: " . $email . "\r\n";

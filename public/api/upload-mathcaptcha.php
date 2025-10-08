@@ -109,7 +109,7 @@ try {
     }
 
     // Prepare email content
-    $emailContent = "Uus metsakava hindamise päring metsamaahind.ee-st:\n\n";
+    $emailContent = "Uus metsakava hindamise päring metsamaahind.ee-st (Math CAPTCHA):\n\n";
     $emailContent .= "Nimi: " . $name . "\n";
     $emailContent .= "E-mail: " . $email . "\n";
     $emailContent .= $fileInfo;
@@ -117,7 +117,7 @@ try {
     $emailContent .= "Saadetud: " . date('d.m.Y H:i:s') . "\n";
 
     // Send email with better headers for Zone.ee
-    $to = 'karlsimmer@gmail.com';
+    $to = 'info@metsamaahind.ee';
     $subject = 'Metsakava hindamine - metsamaahind.ee';
     $headers = "From: noreply@zoneas.eu\r\n";
     $headers .= "Reply-To: " . $email . "\r\n";
