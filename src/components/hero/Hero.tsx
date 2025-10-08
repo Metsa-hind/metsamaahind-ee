@@ -36,14 +36,6 @@ export default function Hero({
     setIsSubmitting(true);
 
     try {
-      // Get reCAPTCHA token
-      const recaptchaToken = await executeRecaptcha('contact_form');
-      
-      if (!recaptchaToken) {
-        alert('reCAPTCHA verification failed. Please try again.');
-        return;
-      }
-      
       // Create FormData using refs
       const formData = new FormData();
       
@@ -58,10 +50,11 @@ export default function Hero({
       if (email) formData.append('email', email);
       if (message) formData.append('message', message);
       
-      formData.append('recaptcha_token', recaptchaToken);
+      // Add honeypot field (should be empty)
+      formData.append('website', '');
       
-      // Submit to PHP endpoint
-      const response = await fetch('/api/contact.php', {
+      // Submit to simple PHP endpoint (no reCAPTCHA)
+      const response = await fetch('/api/contact-simple.php', {
         method: 'POST',
         body: formData,
       });
@@ -266,6 +259,15 @@ export default function Hero({
                   />
                 </Field>
               </div>
+
+              {/* Honeypot field - hidden from users, bots will fill it */}
+              <input
+                type="text"
+                name="website"
+                style={{ display: 'none' }}
+                tabIndex={-1}
+                autoComplete="off"
+              />
 
               <button
                 type="submit"

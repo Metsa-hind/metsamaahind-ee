@@ -31,14 +31,6 @@ export default function UploadCard() {
     setIsSubmitting(true);
 
     try {
-      // Get reCAPTCHA token
-      const recaptchaToken = await executeRecaptcha('upload_form');
-      
-      if (!recaptchaToken) {
-        alert('reCAPTCHA verification failed. Please try again.');
-        return;
-      }
-      
       // Create FormData and add form values using refs
       const formData = new FormData();
       
@@ -51,15 +43,16 @@ export default function UploadCard() {
       if (email) formData.append('email', email);
       if (message) formData.append('message', message);
       
-      formData.append('recaptcha_token', recaptchaToken);
+      // Add honeypot field (should be empty)
+      formData.append('website', '');
       
       // Add the file to form data if available
       if (inputRef.current?.files?.[0]) {
         formData.append('metsakava_file', inputRef.current.files[0]);
       }
       
-      // Submit to PHP endpoint
-      const response = await fetch('/api/upload.php', {
+      // Submit to simple PHP endpoint (no reCAPTCHA)
+      const response = await fetch('/api/upload-simple.php', {
         method: 'POST',
         body: formData,
       });
@@ -185,6 +178,14 @@ export default function UploadCard() {
                   name="message"
                   placeholder="Lisainfo"
                   className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-[14px] font-medium outline-none ring-emerald-300/40 placeholder-slate-500 focus:ring-4"
+                />
+                {/* Honeypot field - hidden from users, bots will fill it */}
+                <input
+                  type="text"
+                  name="website"
+                  style={{ display: 'none' }}
+                  tabIndex={-1}
+                  autoComplete="off"
                 />
                 </div>
               <button
