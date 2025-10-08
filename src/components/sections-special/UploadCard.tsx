@@ -39,21 +39,25 @@ export default function UploadCard() {
         formData.append('metsakava_file', inputRef.current.files[0]);
       }
       
-      // Handle form submission here
-      console.log('Upload form data with reCAPTCHA token ready for submission:', {
-        file: fileName,
-        hasRecaptchaToken: !!recaptchaToken
+      // Submit to PHP endpoint
+      const response = await fetch('/api/upload.php', {
+        method: 'POST',
+        body: formData,
       });
-      
-      // TODO: Implement actual form submission to your backend
-      alert('Vorm on edukalt saadetud! (reCAPTCHA kinnitatud)');
-      
-      // Reset form
-      setFileName(null);
-      if (inputRef.current) {
-        inputRef.current.value = '';
+
+      const result = await response.json();
+
+      if (response.ok) {
+        alert(result.message);
+        // Reset form on success
+        setFileName(null);
+        if (inputRef.current) {
+          inputRef.current.value = '';
+        }
+        e.currentTarget.reset();
+      } else {
+        alert(result.error || 'Vormi saatmisel tekkis viga. Palun proovige uuesti.');
       }
-      e.currentTarget.reset();
       
     } catch (error) {
       console.error('Vormi saatmine ebaõnnestus:', error);

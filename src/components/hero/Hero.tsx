@@ -38,18 +38,21 @@ export default function Hero({
       const formData = new FormData(e.currentTarget);
       formData.append('recaptcha_token', recaptchaToken);
       
-      // Handle form submission here
-      console.log('Contact form data with reCAPTCHA token ready for submission:', {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        hasRecaptchaToken: !!recaptchaToken
+      // Submit to PHP endpoint
+      const response = await fetch('/api/contact.php', {
+        method: 'POST',
+        body: formData,
       });
-      
-      // TODO: Implement actual form submission to your backend
-      alert('Vorm on edukalt saadetud! (reCAPTCHA kinnitatud)');
-      
-      // Reset form
-      e.currentTarget.reset();
+
+      const result = await response.json();
+
+      if (response.ok) {
+        alert(result.message);
+        // Reset form on success
+        e.currentTarget.reset();
+      } else {
+        alert(result.error || 'Vormi saatmisel tekkis viga. Palun proovige uuesti.');
+      }
       
     } catch (error) {
       console.error('Vormi saatmine ebaõnnestus:', error);
