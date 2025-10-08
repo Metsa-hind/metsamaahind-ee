@@ -35,7 +35,26 @@ export default function Hero({
       // Get reCAPTCHA token
       const recaptchaToken = await executeRecaptcha('contact_form');
       
-      const formData = new FormData(e.currentTarget);
+      if (!recaptchaToken) {
+        alert('reCAPTCHA verification failed. Please try again.');
+        return;
+      }
+      
+      // Create FormData safely
+      const formData = new FormData();
+      const form = e.currentTarget;
+      
+      // Get form field values
+      const nameInput = form.querySelector('input[name="name"]') as HTMLInputElement;
+      const phoneInput = form.querySelector('input[name="phone"]') as HTMLInputElement;
+      const emailInput = form.querySelector('input[name="email"]') as HTMLInputElement;
+      const messageInput = form.querySelector('textarea[name="message"]') as HTMLTextAreaElement;
+      
+      if (nameInput?.value) formData.append('name', nameInput.value);
+      if (phoneInput?.value) formData.append('phone', phoneInput.value);
+      if (emailInput?.value) formData.append('email', emailInput.value);
+      if (messageInput?.value) formData.append('message', messageInput.value);
+      
       formData.append('recaptcha_token', recaptchaToken);
       
       // Submit to PHP endpoint

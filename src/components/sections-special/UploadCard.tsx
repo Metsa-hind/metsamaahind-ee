@@ -28,19 +28,26 @@ export default function UploadCard() {
     setIsSubmitting(true);
 
     try {
-      // Get reCAPTCHA token
-      const recaptchaToken = await executeRecaptcha('upload_form');
+      // Create FormData and add form values manually (skip reCAPTCHA for testing)
+      const formData = new FormData();
+      const form = e.currentTarget;
       
-      const formData = new FormData(e.currentTarget);
-      formData.append('recaptcha_token', recaptchaToken);
+      // Get form field values
+      const nameInput = form.querySelector('input[name="name"]') as HTMLInputElement;
+      const emailInput = form.querySelector('input[name="email"]') as HTMLInputElement;
+      const messageInput = form.querySelector('textarea[name="message"]') as HTMLTextAreaElement;
+      
+      if (nameInput?.value) formData.append('name', nameInput.value);
+      if (emailInput?.value) formData.append('email', emailInput.value);
+      if (messageInput?.value) formData.append('message', messageInput.value);
       
       // Add the file to form data if available
       if (inputRef.current?.files?.[0]) {
         formData.append('metsakava_file', inputRef.current.files[0]);
       }
       
-      // Submit to PHP endpoint
-      const response = await fetch('/api/upload.php', {
+      // Submit to temporary PHP endpoint (no reCAPTCHA for testing)
+      const response = await fetch('/api/upload-temp.php', {
         method: 'POST',
         body: formData,
       });
