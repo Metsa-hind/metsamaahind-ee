@@ -66,7 +66,7 @@ if (!empty($missing_fields)) {
 }
 
 // Try to send email (without reCAPTCHA for now)
-$to = 'karlsimmer@gmail.com';
+$to = 'info@erametsaselts.ee';
 $subject = 'Kontaktivormi sõnum - ' . $_POST['name'];
 $message = "Nimi: " . $_POST['name'] . "\n";
 $message .= "Telefon: " . $_POST['phone'] . "\n";

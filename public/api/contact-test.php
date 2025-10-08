@@ -67,7 +67,7 @@ try {
     $emailContent .= "Saadetud: " . date('d.m.Y H:i:s') . "\n";
 
     // Try simple email first
-    $to = 'karlsimmer@gmail.com';
+    $to = 'info@erametsaselts.ee';
     $subject = 'TEST - Kontakt metsamaahind.ee';
     
     // Simple headers for Zone.ee

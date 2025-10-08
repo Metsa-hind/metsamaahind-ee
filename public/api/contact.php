@@ -68,7 +68,7 @@ try {
     $emailContent .= "E-mail: " . $email . "\n";
     $emailContent .= "Kataster: " . ($kataster ?: 'Ei täidetud') . "\n";
     $emailContent .= "Telefon: " . ($phone ?: 'Ei täidetud') . "\n";
-    $emailContent .= "Lisainfo: " . ($message ?: 'Ei täidetud') . "\n\n";
+    $emailContent .= "Lisainfo: " . ($message ?: 'Ei täidetud') . "\n\n";@
     $emailContent .= "Saadetud: " . date('d.m.Y H:i:s') . "\n";
 
     // Send email
