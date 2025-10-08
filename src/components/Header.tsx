@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { ChevronDown, Trees, Axe, Tractor, Mail } from "lucide-react";
 import { Container } from "@/components/primitives/Container";
@@ -40,9 +41,9 @@ function Dropdown({ label, items, Icon }: { label: string; items: Item[]; Icon: 
           <ul className="py-2 text-sm text-emerald-900">
             {items.map((i) => (
               <li key={i.href}>
-                <a href={i.href} className="block px-4 py-2 hover:bg-emerald-50">
+                <Link href={i.href} className="block px-4 py-2 hover:bg-emerald-50">
                   {i.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -62,23 +63,23 @@ export function Header() {
         <div className="flex items-center justify-between">
           {/* Left cluster: logo + nav */}
           <div className="flex items-center gap-3 lg:gap-5">
-            <a href="/" className="inline-flex items-center gap-2">
+            <Link href="/" className="inline-flex items-center gap-2">
               <Image src="/metsa-hind-ikoon.png" alt="Metsa Hind" width={36} height={36} className="h-9 w-9" />
-            </a>
+            </Link>
 
             {/* Mobile-only CTA next to logo */}
-            <a
+            <Link
               href="/kontakt/"
               className="lg:hidden inline-flex items-center rounded-lg bg-emerald-100 px-3 py-1.5 text-sm font-semibold text-emerald-800"
             >
               Kontaktivorm
-            </a>
+            </Link>
 
             {/* Desktop nav next to logo */}
             <nav className="hidden lg:flex items-center gap-1">
-            <a href="/" className="rounded-lg px-3 py-2 text-sm font-medium text-emerald-900 hover:bg-emerald-50">
+            <Link href="/" className="rounded-lg px-3 py-2 text-sm font-medium text-emerald-900 hover:bg-emerald-50">
                 Avaleht
-            </a>
+            </Link>
             <Dropdown label="Metsamaa" items={METSAMAAD} Icon={Trees} />
             <Dropdown label="Metsaraie" items={METSARAIE} Icon={Axe} />
             <Dropdown label="Põllumaa" items={POLLUMAA} Icon={Tractor} />
@@ -91,13 +92,13 @@ export function Header() {
               <Mail className="h-5 w-5 flex-shrink-0" />
               <span>info@metsamaahind.ee</span>
             </a>
-            <a
+            <Link
               href="/kontakt/"
               className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-5 py-2.5 font-semibold text-white shadow transition-colors hover:bg-emerald-700"
             >
                 KONTAKTIVORM
               <span aria-hidden>→</span>
-              </a>
+              </Link>
           </div>
 
           {/* Mobile trigger */}
@@ -134,9 +135,9 @@ export function Header() {
                   </div>
 
                   <nav className="mt-4 space-y-5 text-emerald-900">
-              <a href="/" className="block rounded-lg px-3 py-2 text-sm hover:bg-emerald-50" onClick={() => setMobileOpen(false)}>
+              <Link href="/" className="block rounded-lg px-3 py-2 text-sm hover:bg-emerald-50" onClick={() => setMobileOpen(false)}>
                 Avaleht
-              </a>
+              </Link>
 
                     <div>
                 <button
@@ -151,9 +152,9 @@ export function Header() {
                 {openSection === "metsamaa" && (
                       <div className="mt-2 grid gap-1">
                     {METSAMAAD.map((i) => (
-                          <a key={i.href} href={i.href} className="rounded-lg px-3 py-2 text-sm hover:bg-emerald-50" onClick={() => setMobileOpen(false)}>
+                          <Link key={i.href} href={i.href} className="rounded-lg px-3 py-2 text-sm hover:bg-emerald-50" onClick={() => setMobileOpen(false)}>
                             {i.label}
-                          </a>
+                          </Link>
                         ))}
                       </div>
                 )}
@@ -172,9 +173,9 @@ export function Header() {
                 {openSection === "metsaraie" && (
                       <div className="mt-2 grid gap-1">
                     {METSARAIE.map((i) => (
-                          <a key={i.href} href={i.href} className="rounded-lg px-3 py-2 text-sm hover:bg-emerald-50" onClick={() => setMobileOpen(false)}>
+                          <Link key={i.href} href={i.href} className="rounded-lg px-3 py-2 text-sm hover:bg-emerald-50" onClick={() => setMobileOpen(false)}>
                             {i.label}
-                          </a>
+                          </Link>
                         ))}
                       </div>
                 )}
@@ -193,17 +194,17 @@ export function Header() {
                 {openSection === "pollumaa" && (
                       <div className="mt-2 grid gap-1">
                     {POLLUMAA.map((i) => (
-                          <a key={i.href} href={i.href} className="rounded-lg px-3 py-2 text-sm hover:bg-emerald-50" onClick={() => setMobileOpen(false)}>
+                          <Link key={i.href} href={i.href} className="rounded-lg px-3 py-2 text-sm hover:bg-emerald-50" onClick={() => setMobileOpen(false)}>
                             {i.label}
-                          </a>
+                          </Link>
                         ))}
                       </div>
                 )}
                     </div>
 
-              <a href="/kontakt/" className="block rounded-lg px-3 py-2 text-sm hover:bg-emerald-50" onClick={() => setMobileOpen(false)}>
+              <Link href="/kontakt/" className="block rounded-lg px-3 py-2 text-sm hover:bg-emerald-50" onClick={() => setMobileOpen(false)}>
                 Kontakt
-              </a>
+              </Link>
             </nav>
           </div>
                     </div>

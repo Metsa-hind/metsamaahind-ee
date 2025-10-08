@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useId, useState } from "react";
 import AvatarStack from "@/components/ui/AvatarStack";
 import { useRecaptcha } from "@/hooks/useRecaptcha";
@@ -58,24 +59,6 @@ export default function Hero({
     }
   };
 
-  // Prepare title content to avoid hydration issues
-  const renderTitle = () => {
-    if (titleHighlight && title.includes(titleHighlight)) {
-      const startIndex = title.indexOf(titleHighlight);
-      const before = title.slice(0, startIndex);
-      const match = title.slice(startIndex, startIndex + titleHighlight.length);
-      const after = title.slice(startIndex + titleHighlight.length);
-      return (
-        <>
-          {before}
-          <span className="text-emerald-600">{match}</span>
-          {after}
-        </>
-      );
-    }
-    return title;
-  };
-
   return (
     <section className="relative isolate">
       <div className="mx-auto w-full max-w-[1200px] px-4 pt-6 sm:pt-10 md:pt-24">
@@ -84,7 +67,22 @@ export default function Hero({
           <div className="text-emerald-950/95">
             <div className="-mt-[15px]">
             <h1 className="mt-[60px] md:mt-4 font-adcreative text-4xl leading-[1.1] sm:text-5xl md:text-6xl text-emerald-950">
-              {renderTitle()}
+              {(() => {
+                if (titleHighlight && title.includes(titleHighlight)) {
+                  const startIndex = title.indexOf(titleHighlight);
+                  const before = title.slice(0, startIndex);
+                  const match = title.slice(startIndex, startIndex + titleHighlight.length);
+                  const after = title.slice(startIndex + titleHighlight.length);
+                  return (
+                    <>
+                      {before}
+                      <span className="text-emerald-600">{match}</span>
+                      {after}
+                    </>
+                  );
+                }
+                return title;
+              })()}
             </h1>
 
             <p className="mt-[21px] pr-0 md:pr-[80px] text-lg font-normal text-emerald-800 sm:text-xl">
@@ -112,7 +110,7 @@ export default function Hero({
 
             <div className="mt-3 flex items-center gap-3">
               {!hidePrimaryCta && (
-                <a
+                <Link
                   href="/"
                   className="group inline-flex h-11 items-center rounded-lg bg-emerald-600 px-5 text-sm font-semibold text-white hover:bg-emerald-700 transition-all duration-200"
                 >
@@ -120,9 +118,9 @@ export default function Hero({
                   <svg className="ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
-                </a>
+                </Link>
               )}
-              <a
+              <Link
                 href={secondaryHref || "/#hinnastatistika"}
                 className="group inline-flex h-11 items-center rounded-lg bg-gradient-to-r from-emerald-50 to-emerald-100 border border-emerald-200/60 px-4 text-sm font-semibold text-emerald-900 hover:from-emerald-100 hover:to-emerald-150 transition-all duration-200"
               >
@@ -130,7 +128,7 @@ export default function Hero({
                 <svg className="ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
-              </a>
+              </Link>
             </div>
 
             <p className="mt-3 text-[14px] text-emerald-700/70">
@@ -267,10 +265,11 @@ function Field({
   label: string;
   children: React.ReactNode;
 }) {
+  const id = useId();
   return (
-    <label className="block text-sm font-medium text-slate-700">
+    <label htmlFor={id} className="block text-sm font-medium text-slate-700">
       {label}
-      <div className="mt-1">
+      <div className="mt-1" id={id as unknown as string}>
         {children}
       </div>
     </label>
