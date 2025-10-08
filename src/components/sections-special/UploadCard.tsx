@@ -28,11 +28,12 @@ export default function UploadCard() {
     setIsSubmitting(true);
 
     try {
-      // Get reCAPTCHA token
-      const recaptchaToken = await executeRecaptcha('upload_form');
-      
+      // Create FormData from form
       const formData = new FormData(e.currentTarget);
-      formData.append('recaptcha_token', recaptchaToken);
+      
+      // Skip reCAPTCHA for debugging
+      // const recaptchaToken = await executeRecaptcha('upload_form');
+      // formData.append('recaptcha_token', recaptchaToken);
       
       // Add the file to form data if available
       if (inputRef.current?.files?.[0]) {

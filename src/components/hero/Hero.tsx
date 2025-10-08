@@ -32,14 +32,15 @@ export default function Hero({
     setIsSubmitting(true);
 
     try {
-      // Get reCAPTCHA token
-      const recaptchaToken = await executeRecaptcha('contact_form');
-      
+      // Create FormData from form
       const formData = new FormData(e.currentTarget);
-      formData.append('recaptcha_token', recaptchaToken);
       
-      // Submit to test PHP endpoint
-      const response = await fetch('/api/contact-test.php', {
+      // Skip reCAPTCHA for debugging
+      // const recaptchaToken = await executeRecaptcha('contact_form');
+      // formData.append('recaptcha_token', recaptchaToken);
+      
+      // Submit to simple PHP endpoint (no reCAPTCHA for debugging)
+      const response = await fetch('/api/simple-contact.php', {
         method: 'POST',
         body: formData,
       });
