@@ -39,8 +39,8 @@ export default function UploadCard() {
         formData.append('metsakava_file', inputRef.current.files[0]);
       }
       
-      // Submit to PHP endpoint
-      const response = await fetch('/api/upload.php', {
+      // Submit to test PHP endpoint
+      const response = await fetch('/api/upload-test.php', {
         method: 'POST',
         body: formData,
       });

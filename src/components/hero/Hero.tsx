@@ -38,8 +38,8 @@ export default function Hero({
       const formData = new FormData(e.currentTarget);
       formData.append('recaptcha_token', recaptchaToken);
       
-      // Submit to PHP endpoint
-      const response = await fetch('/api/contact.php', {
+      // Submit to test PHP endpoint
+      const response = await fetch('/api/contact-test.php', {
         method: 'POST',
         body: formData,
       });
@@ -47,11 +47,11 @@ export default function Hero({
       const result = await response.json();
 
       if (response.ok) {
-        alert(result.message);
+        alert(result.message + (result.debug ? '\n\nDebug: ' + result.debug : ''));
         // Reset form on success
         e.currentTarget.reset();
       } else {
-        alert(result.error || 'Vormi saatmisel tekkis viga. Palun proovige uuesti.');
+        alert((result.error || 'Vormi saatmisel tekkis viga. Palun proovige uuesti.') + (result.debug ? '\n\nDebug: ' + result.debug : ''));
       }
       
     } catch (error) {
