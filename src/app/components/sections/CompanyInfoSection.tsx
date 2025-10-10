@@ -17,7 +17,7 @@ export default function CompanyInfoSection() {
       addressCountry: "EE",
     },
     email: "info@metsamaahind.ee",
-    telephone: "+372 5123 4567",
+    telephone: "+372 5846 6110",
   };
   return (
     <section aria-labelledby="company-info" className="mt-[150px] pb-[60px]">
@@ -205,7 +205,7 @@ export default function CompanyInfoSection() {
                   </div>
                   <div className="mx-auto flex items-center gap-2">
                     <Phone strokeWidth={0.5} className="h-[18px] w-[18px] text-emerald-700" />
-                    <a href="tel:+37251234567" className="text-emerald-700 hover:underline">+372 5123 4567</a>
+                    <a href="tel:+37251234567" className="text-emerald-700 hover:underline">+372 5846 6110</a>
                   </div>
                   <p className="mx-auto mt-1 text-[12px] text-gray-600">Metsa Hind OÜ</p>
                 </div>

@@ -40,7 +40,7 @@ export default function Footer() {
             <p className="mt-3 mx-auto md:mx-0 max-w-[46ch] text-sm leading-6 text-emerald-900/85">
               Oleme 100% Eesti kapitalil põhinev kohalik ettevõte ning meie põhitegevusaladeks on kinnistute hindamine, ost/müük ning nende igapäevane majandamine.
             </p>
-            <p className="mt-2 text-xs text-emerald-900/60">Hobujaama tn 4, Tallinn · info@metsamaahind.ee · +372 5341 2277</p>
+            <p className="mt-2 text-xs text-emerald-900/60">Hobujaama tn 4, Tallinn · info@metsamaahind.ee · +372 5846 6110</p>
           </div>
 
           {/* Nav as vertical columns */}

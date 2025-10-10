@@ -245,7 +245,7 @@ export default function Hero({
                     name="phone"
                     autoComplete="tel"
                     className="h-11 w-full rounded-lg border border-slate-200 px-3 outline-none ring-emerald-300/40 focus:ring-4"
-                    placeholder="+372 5123 4567"
+                    placeholder="+372 5846 6110"
                   />
                 </Field>
 
