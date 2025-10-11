@@ -65,7 +65,7 @@ export default function Footer() {
                   Metsamaa
                 </h4>
                 <ul className="mt-3 space-y-2 text-sm">
-                  {[{href:"https://metsamaahind.ee/metsa-muuk/",label:"Metsa müük"},{href:"https://metsamaahind.ee/metsa-ost/",label:"Metsa ost"},{href:"https://metsamaahind.ee",label:"Metsa hind"},{href:"https://metsamaahind.ee/metsa-istutamine/",label:"Metsa istutamine"}] .map(i=> (
+                  {[{href:"/metsa-muuk/",label:"Metsa müük"},{href:"/metsa-ost/",label:"Metsa ost"},{href:"/",label:"Metsa hind"},{href:"/metsa-istutamine/",label:"Metsa istutamine"}] .map(i=> (
                     <li key={i.href}>
                       <Link href={i.href} className="text-emerald-900/85 hover:text-emerald-900 hover:underline underline-offset-4">{i.label}</Link>
                     </li>
@@ -78,7 +78,7 @@ export default function Footer() {
                   Põllumaa
                 </h4>
                 <ul className="mt-3 space-y-2 text-sm">
-                  {[{href:"https://metsamaahind.ee/pollumaa-ost/",label:"Põllumaa ost"},{href:"https://metsamaahind.ee/pollumaa-muuk/",label:"Põllumaa müük"},{href:"https://metsamaahind.ee/pollumaa-hind/",label:"Põllumaa hind"}] .map(i=> (
+                  {[{href:"/pollumaa-ost/",label:"Põllumaa ost"},{href:"/pollumaa-muuk/",label:"Põllumaa müük"},{href:"/pollumaa-hind/",label:"Põllumaa hind"}] .map(i=> (
                     <li key={i.href}>
                       <Link href={i.href} className="text-emerald-900/85 hover:text-emerald-900 hover:underline underline-offset-4">{i.label}</Link>
                     </li>
@@ -91,7 +91,7 @@ export default function Footer() {
                   Metsaraie
                 </h4>
                 <ul className="mt-3 space-y-2 text-sm">
-                  {[{href:"https://metsamaahind.ee/raieoiguse-muuk/",label:"Raieõiguse müük"},{href:"https://metsamaahind.ee/raieoiguse-ost/",label:"Raieõiguse ost"},{href:"https://metsamaahind.ee/raieoiguse-hind/",label:"Raieõiguse hind"},{href:"https://metsamaahind.ee/metsateatis/",label:"Metsateatis"},{href:"https://metsamaahind.ee/hooldusraied/",label:"Hooldusraied"}] .map(i=> (
+                  {[{href:"/raieoiguse-muuk/",label:"Raieõiguse müük"},{href:"/raieoiguse-ost/",label:"Raieõiguse ost"},{href:"/raieoiguse-hind/",label:"Raieõiguse hind"},{href:"/metsateatis/",label:"Metsateatis"},{href:"/hooldusraied/",label:"Hooldusraied"}] .map(i=> (
                     <li key={i.href}>
                       <Link href={i.href} className="text-emerald-900/85 hover:text-emerald-900 hover:underline underline-offset-4">{i.label}</Link>
                     </li>
@@ -104,7 +104,7 @@ export default function Footer() {
                   Kasulikku
                 </h4>
                 <ul className="mt-3 space-y-2 text-sm">
-                  {[{href:"https://metsamaahind.ee/metsamajandamiskava/",label:"Metsakava"},{href:"https://register.metsad.ee/",label:"Metsaregister"},{href:"https://erametsaliit.ee/puidu-hinnainfo",label:"Puidu hinnad"},{href:"https://riigiteataja.ee/akt/MS",label:"Metsaseadus"}] .map(i=> (
+                  {[{href:"/metsamajandamiskava/",label:"Metsakava"},{href:"https://register.metsad.ee/",label:"Metsaregister"},{href:"https://erametsaliit.ee/puidu-hinnainfo",label:"Puidu hinnad"},{href:"https://riigiteataja.ee/akt/MS",label:"Metsaseadus"}] .map(i=> (
                     <li key={i.href}>
                       <Link href={i.href} className="text-emerald-900/85 hover:text-emerald-900 hover:underline underline-offset-4">{i.label}</Link>
                     </li>

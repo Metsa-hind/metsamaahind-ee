@@ -20,7 +20,7 @@ export default function CtaContactSection() {
 
             <div className="mt-6">
               <Link
-                href="https://metsamaahind.ee/kontakt/"
+                href="/kontakt"
                 className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-semibold text-emerald-800 shadow transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-white"
               >
                 <span className="relative inline-block">
