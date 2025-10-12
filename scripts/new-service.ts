@@ -26,7 +26,7 @@ if (fs.existsSync(file)) {
 const template = ---
 title: ""
 description: ""
-canonical: "https://example.com/"
+canonical: "https://metsamaahind.ee/"
 ogImage: ""
 faq: []
 related: []

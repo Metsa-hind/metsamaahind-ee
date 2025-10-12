@@ -3,7 +3,7 @@
 }
 
 export const BASE_URL = trimTrailingSlash(
-  process.env.NEXT_PUBLIC_BASE_URL || "https://example.com"
+  process.env.NEXT_PUBLIC_BASE_URL || "https://metsamaahind.ee"
 );
 
 export const LinkRegistry: Record<string, { slug: string; title?: string }> = {};

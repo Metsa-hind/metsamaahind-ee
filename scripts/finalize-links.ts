@@ -1,7 +1,7 @@
 ﻿import fs from "fs";
 import path from "path";
 
-const base = (process.env.NEXT_PUBLIC_BASE_URL || "https://example.com").replace(/\/$/, "");
+const base = (process.env.NEXT_PUBLIC_BASE_URL || "https://metsamaahind.ee/").replace(/\/$/, "");
 const contentRoot = path.join(process.cwd(), "content");
 
 function walk(dir: string, acc: string[] = []) {
