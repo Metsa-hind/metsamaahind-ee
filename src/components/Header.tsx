@@ -70,7 +70,7 @@ export function Header() {
 
             {/* Mobile-only CTA next to logo */}
             <Link
-              href={absUrl("/kontakt/")}
+              href={absUrl("/kontakt")}
               className="lg:hidden inline-flex items-center rounded-lg bg-emerald-100 px-3 py-1.5 text-sm font-semibold text-emerald-800"
             >
               Kontaktivorm
@@ -94,7 +94,7 @@ export function Header() {
               <span>info@metsamaahind.ee</span>
             </a>
             <Link
-              href={absUrl("/kontakt/")}
+              href={absUrl("/kontakt")}
               className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-5 py-2.5 font-semibold text-white shadow transition-colors hover:bg-emerald-700"
             >
                 KONTAKTIVORM
@@ -203,7 +203,7 @@ export function Header() {
                 )}
                     </div>
 
-              <Link href={absUrl("/kontakt/")} className="block rounded-lg px-3 py-2 text-sm hover:bg-emerald-50" onClick={() => setMobileOpen(false)}>
+              <Link href={absUrl("/kontakt")} className="block rounded-lg px-3 py-2 text-sm hover:bg-emerald-50" onClick={() => setMobileOpen(false)}>
                 Kontakt
               </Link>
             </nav>
