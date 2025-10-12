@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useId, useState, useEffect, useRef } from "react";
 import AvatarStack from "@/components/ui/AvatarStack";
 import { useRecaptcha } from "@/hooks/useRecaptcha";
+import { absUrl } from "@/lib/routes";
 
 export default function Hero({
   title = "Metsa müük lihtsalt ja murevabalt",
@@ -132,7 +133,7 @@ export default function Hero({
             <div className="mt-3 flex items-center gap-3">
               {!hidePrimaryCta && (
                 <Link
-                  href="/"
+                  href={absUrl("/")}
                   className="group inline-flex h-11 items-center rounded-lg bg-emerald-600 px-5 text-sm font-semibold text-white hover:bg-emerald-700 transition-all duration-200"
                 >
                   Metsa hind

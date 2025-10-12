@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { ChevronDown, Trees, Axe, Tractor, Mail } from "lucide-react";
 import { Container } from "@/components/primitives/Container";
+import { absUrl } from "@/lib/routes";
 
 type Item = { label: string; href: string };
 
@@ -63,13 +64,13 @@ export function Header() {
         <div className="flex items-center justify-between">
           {/* Left cluster: logo + nav */}
           <div className="flex items-center gap-3 lg:gap-5">
-            <Link href="/" className="inline-flex items-center gap-2">
+            <Link href={absUrl("/")} className="inline-flex items-center gap-2">
               <Image src="/metsa-hind-ikoon.png" alt="Metsa Hind" width={36} height={36} className="h-9 w-9" />
             </Link>
 
             {/* Mobile-only CTA next to logo */}
             <Link
-              href="/kontakt/"
+              href={absUrl("/kontakt/")}
               className="lg:hidden inline-flex items-center rounded-lg bg-emerald-100 px-3 py-1.5 text-sm font-semibold text-emerald-800"
             >
               Kontaktivorm
@@ -77,7 +78,7 @@ export function Header() {
 
             {/* Desktop nav next to logo */}
             <nav className="hidden lg:flex items-center gap-1">
-            <Link href="/" className="rounded-lg px-3 py-2 text-sm font-medium text-emerald-900 hover:bg-emerald-50">
+            <Link href={absUrl("/")} className="rounded-lg px-3 py-2 text-sm font-medium text-emerald-900 hover:bg-emerald-50">
                 Avaleht
             </Link>
             <Dropdown label="Metsamaa" items={METSAMAAD} Icon={Trees} />
@@ -93,7 +94,7 @@ export function Header() {
               <span>info@metsamaahind.ee</span>
             </a>
             <Link
-              href="/kontakt/"
+              href={absUrl("/kontakt/")}
               className="inline-flex items-center gap-2 rounded-lg bg-emerald-600 px-5 py-2.5 font-semibold text-white shadow transition-colors hover:bg-emerald-700"
             >
                 KONTAKTIVORM
@@ -135,7 +136,7 @@ export function Header() {
                   </div>
 
                   <nav className="mt-4 space-y-5 text-emerald-900">
-              <Link href="/" className="block rounded-lg px-3 py-2 text-sm hover:bg-emerald-50" onClick={() => setMobileOpen(false)}>
+              <Link href={absUrl("/")} className="block rounded-lg px-3 py-2 text-sm hover:bg-emerald-50" onClick={() => setMobileOpen(false)}>
                 Avaleht
               </Link>
 
@@ -202,7 +203,7 @@ export function Header() {
                 )}
                     </div>
 
-              <Link href="/kontakt/" className="block rounded-lg px-3 py-2 text-sm hover:bg-emerald-50" onClick={() => setMobileOpen(false)}>
+              <Link href={absUrl("/kontakt/")} className="block rounded-lg px-3 py-2 text-sm hover:bg-emerald-50" onClick={() => setMobileOpen(false)}>
                 Kontakt
               </Link>
             </nav>

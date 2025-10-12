@@ -54,7 +54,7 @@ export default function Footer() {
                 <ul className="mt-3 space-y-2 text-sm">
                   {[{href:"/",label:"Avaleht"},{href:"/about/",label:"Ettevõttest"},{href:"/kontakt/",label:"Kontakt"}] .map(i=> (
                     <li key={i.href}>
-                      <Link href={i.href} className="text-emerald-900/85 hover:text-emerald-900 hover:underline underline-offset-4">{i.label}</Link>
+                      <Link href={absUrl(i.href)} className="text-emerald-900/85 hover:text-emerald-900 hover:underline underline-offset-4">{i.label}</Link>
                     </li>
                   ))}
                 </ul>
@@ -67,7 +67,7 @@ export default function Footer() {
                 <ul className="mt-3 space-y-2 text-sm">
                   {[{href:"/metsa-muuk/",label:"Metsa müük"},{href:"/metsa-ost/",label:"Metsa ost"},{href:"/",label:"Metsa hind"},{href:"/metsa-istutamine/",label:"Metsa istutamine"}] .map(i=> (
                     <li key={i.href}>
-                      <Link href={i.href} className="text-emerald-900/85 hover:text-emerald-900 hover:underline underline-offset-4">{i.label}</Link>
+                      <Link href={absUrl(i.href)} className="text-emerald-900/85 hover:text-emerald-900 hover:underline underline-offset-4">{i.label}</Link>
                     </li>
                   ))}
                 </ul>
@@ -80,7 +80,7 @@ export default function Footer() {
                 <ul className="mt-3 space-y-2 text-sm">
                   {[{href:"/pollumaa-ost/",label:"Põllumaa ost"},{href:"/pollumaa-muuk/",label:"Põllumaa müük"},{href:"/pollumaa-hind/",label:"Põllumaa hind"}] .map(i=> (
                     <li key={i.href}>
-                      <Link href={i.href} className="text-emerald-900/85 hover:text-emerald-900 hover:underline underline-offset-4">{i.label}</Link>
+                      <Link href={absUrl(i.href)} className="text-emerald-900/85 hover:text-emerald-900 hover:underline underline-offset-4">{i.label}</Link>
                     </li>
                   ))}
                 </ul>
@@ -93,7 +93,7 @@ export default function Footer() {
                 <ul className="mt-3 space-y-2 text-sm">
                   {[{href:"/raieoiguse-muuk/",label:"Raieõiguse müük"},{href:"/raieoiguse-ost/",label:"Raieõiguse ost"},{href:"/raieoiguse-hind/",label:"Raieõiguse hind"},{href:"/metsateatis/",label:"Metsateatis"},{href:"/hooldusraied/",label:"Hooldusraied"}] .map(i=> (
                     <li key={i.href}>
-                      <Link href={i.href} className="text-emerald-900/85 hover:text-emerald-900 hover:underline underline-offset-4">{i.label}</Link>
+                      <Link href={absUrl(i.href)} className="text-emerald-900/85 hover:text-emerald-900 hover:underline underline-offset-4">{i.label}</Link>
                     </li>
                   ))}
                 </ul>
@@ -106,7 +106,7 @@ export default function Footer() {
                 <ul className="mt-3 space-y-2 text-sm">
                   {[{href:"/metsamajandamiskava/",label:"Metsakava"},{href:"https://register.metsad.ee/",label:"Metsaregister"},{href:"https://erametsaliit.ee/puidu-hinnainfo",label:"Puidu hinnad"},{href:"https://riigiteataja.ee/akt/MS",label:"Metsaseadus"}] .map(i=> (
                     <li key={i.href}>
-                      <Link href={i.href} className="text-emerald-900/85 hover:text-emerald-900 hover:underline underline-offset-4">{i.label}</Link>
+                      <Link href={absUrl(i.href)} className="text-emerald-900/85 hover:text-emerald-900 hover:underline underline-offset-4">{i.label}</Link>
                     </li>
                   ))}
                 </ul>
