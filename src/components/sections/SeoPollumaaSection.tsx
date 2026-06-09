@@ -16,7 +16,6 @@ export default function SeoPollumaaSection() {
               <div className="mt-3 space-y-1 text-sm text-emerald-900/85">
                 <div>Hobujaama tn 4, Tallinn</div>
                 <div><a href="mailto:info@metsamaahind.ee" className="hover:underline">info@metsamaahind.ee</a></div>
-                <div><a href="tel:+37253412277" className="hover:underline">+372 5341 2277</a></div>
               </div>
               <Link
                 href={absUrl("/kontakt")}
@@ -39,7 +38,7 @@ export default function SeoPollumaaSection() {
                   Kui te soovite oma põllumaad müüa, on oluline leida usaldusväärne ostja, kes maksab ausat ja turu kõrgeimat hinda. Meie ostame põllumaad igas suuruses ja asukohas üle kogu Eesti – alates väikestest maatükkidest kuni suurte põllumassiivideni. Ostame nii hüpoteegiga koormatud kinnistuid, kui ka põllumaid koos talude ja hoonetega. Samuti ei ole takistuseks kehtivad rendilepingud – korraldame tehingu nii, et olemasolevad lepingud jäävad kehtima või vajadusel leiame sobiva lahenduse.
                 </p>
                 <p>
-                  Me maksame põllumaa eest kuni 8000 eurot hektari kohta, sõltuvalt maa kvaliteedist ja turuolukorrast. Oleme tegutsenud põllu- ja metsakinnistute majandamisega üle 15 aasta ning teame, kuidas teha protsess teie jaoks lihtsaks, läbipaistvaks ja murevabaks.
+                  Me maksame põllumaa eest kuni 8000 eurot hektari kohta, sõltuvalt maa kvaliteedist ja turuolukorrast. Oleme tegutsenud põllu- ja metsakinnistute majandamisega pikka aega ning teame, kuidas teha protsess teie jaoks lihtsaks, läbipaistvaks ja murevabaks.
                 </p>
 
                 <h3 className="mt-6 text-xl font-semibold text-emerald-900">Põllumaa ost parima hinnaga</h3>

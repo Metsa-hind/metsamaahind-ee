@@ -16,7 +16,6 @@ export default function SeoOstSection() {
               <div className="mt-3 space-y-1 text-sm text-emerald-900/85">
                 <div>Hobujaama tn 4, Tallinn</div>
                 <div><a href="mailto:info@metsamaahind.ee" className="hover:underline">info@metsamaahind.ee</a></div>
-                <div><a href="tel:+37253412277" className="hover:underline">+372 5341 2277</a></div>
               </div>
               <Link
                 href={absUrl("/kontakt")}
@@ -39,7 +38,7 @@ export default function SeoOstSection() {
                   Kui otsid võimalust oma metsamaa või metsakinnistu müügiks, on meie eesmärk pakkuda sulle lihtsat, kiiret ja ausat protsessi. Me ostame metsamaad igas suuruses ja asukohas üle kogu Eesti – alates väiksematest metsatükkidest kuni suurte majandusmetsadeni. Meile pakuvad huvi ka hüpoteegiga koormatud kinnistud, raiesmikud ning maad, mis ootavad uut metsa istutamist. Meie jaoks ei ole oluline, kas kinnistu on praegu majandusmets, lageraielank või noorendik – hindame ja ostame kõiki tüüpi kinnistuid.
                 </p>
                 <p>
-                  Meil on üle 15 aasta kogemust metsanduses ja kinnistute haldamises. Me ei otsi lühiajalist kasu, vaid investeerime metsamaasse pika perspektiiviga. Meie tegevus hõlmab kogu metsamajanduslikku ringi – alustame metsauuendusest ja istutamisest, hooldame ja majandame metsa kestlikult ning viime lõpuks majanduslikult küpsed metsad turule. Tänu sellele saame pakkuda müüjale kindlustunnet, et tema metsa eest makstakse õiglane ja konkurentsivõimeline hind.
+                  Meil on pikaajaline kogemus metsanduses ja kinnistute haldamises. Me ei otsi lühiajalist kasu, vaid investeerime metsamaasse pika perspektiiviga. Meie tegevus hõlmab kogu metsamajanduslikku ringi – alustame metsauuendusest ja istutamisest, hooldame ja majandame metsa kestlikult ning viime lõpuks majanduslikult küpsed metsad turule. Tänu sellele saame pakkuda müüjale kindlustunnet, et tema metsa eest makstakse õiglane ja konkurentsivõimeline hind.
                 </p>
 
                 <h3 className="mt-6 text-xl font-semibold text-emerald-900">Miks valida meid metsamaa müügiks</h3>
@@ -54,7 +53,7 @@ export default function SeoOstSection() {
                     <strong>Ostame igas seisukorras kinnistuid</strong> – Meie jaoks ei ole probleem, kui kinnistu on koormatud hüpoteegiga, vajab uut istutust või sisaldab juba raiutud alasid.
                   </li>
                   <li>
-                    <strong>Pikaajaline kogemus ja usaldusväärsus</strong> – Meie meeskonnal on üle 15 aasta kogemust metsanduse ja kinnisvara valdkonnas. Me teame täpselt, kuidas metsa majandada ja väärtustada.
+                    <strong>Pikaajaline kogemus ja usaldusväärsus</strong> – Meie meeskonnal on pikaajaline kogemus metsanduse ja kinnisvara valdkonnas. Me teame täpselt, kuidas metsa majandada ja väärtustada.
                   </li>
                   <li>
                     <strong>Isiklik ja paindlik lähenemine</strong> – Me ei paku ühte universaalset lahendust, vaid arvestame iga müüja olukorda ning vajadusi eraldi.

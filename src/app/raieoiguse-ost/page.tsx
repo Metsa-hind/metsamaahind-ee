@@ -2,7 +2,7 @@ import Hero from "@/components/hero/Hero";
 export const metadata = {
   title: "Raieõiguse ost üle Eesti ja Saaremaal",
   description:
-    "Raieõiguse ost turu kõrgeima hinnaga, kiire pakkumine, rohkem kui 15 aastat kogemust, oma masinapark, kindel kvaliteet.",
+    "Raieõiguse ost turu kõrgeima hinnaga, kiire pakkumine, oma masinapark, kindel kvaliteet.",
 };
 import Section from "@/components/primitives/Section";
 import Container from "@/components/primitives/Container";

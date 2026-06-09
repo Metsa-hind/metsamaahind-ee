@@ -40,7 +40,7 @@ export default function Footer() {
             <p className="mt-3 mx-auto md:mx-0 max-w-[46ch] text-sm leading-6 text-emerald-900/85">
               Oleme 100% Eesti kapitalil põhinev kohalik ettevõte ning meie põhitegevusaladeks on kinnistute hindamine, ost/müük ning nende igapäevane majandamine.
             </p>
-            <p className="mt-2 text-xs text-emerald-900/60">Hobujaama tn 4, Tallinn · info@metsamaahind.ee · +372 5846 6110</p>
+            <p className="mt-2 text-xs text-emerald-900/60">Hobujaama tn 4, Tallinn · info@metsamaahind.ee</p>
           </div>
 
           {/* Nav as vertical columns */}
@@ -104,7 +104,7 @@ export default function Footer() {
                   Kasulikku
                 </h4>
                 <ul className="mt-3 space-y-2 text-sm">
-                  {[{href:"/metsamajandamiskava/",label:"Metsakava"},{href:"https://register.metsad.ee/",label:"Metsaregister"},{href:"https://erametsaliit.ee/puidu-hinnainfo",label:"Puidu hinnad"},{href:"https://riigiteataja.ee/akt/MS",label:"Metsaseadus"}] .map(i=> (
+                  {[{href:"/metsamajandamiskava/",label:"Metsakava"},{href:"https://register.metsad.ee/",label:"Metsaregister"},{href:"https://erametsaliit.ee/puidu-hinnainfo",label:"Puidu hinnad"},{href:"https://riigiteataja.ee/akt/MS",label:"Metsaseadus"},{href:"/isikuandmete-kaitse-kord/",label:"Isikuandmete kaitse"}] .map(i=> (
                     <li key={i.href}>
                       <Link href={absUrl(i.href)} className="text-emerald-900/85 hover:text-emerald-900 hover:underline underline-offset-4">{i.label}</Link>
                     </li>
@@ -117,7 +117,6 @@ export default function Footer() {
 
         <div className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-emerald-100/60 pt-6 text-xs text-emerald-900/70 sm:flex-row">
           <div>© {new Date().getFullYear()} Metsa Hind OÜ. Kõik õigused kaitstud.</div>
-          <div>Rohkem kui 15 aastat metsandusalast kogemust</div>
         </div>
       </Container>
     </footer>

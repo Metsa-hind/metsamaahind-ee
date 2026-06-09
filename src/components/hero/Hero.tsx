@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useId, useState, useEffect, useRef } from "react";
 import AvatarStack from "@/components/ui/AvatarStack";
+import ConsentCheckbox from "@/components/ui/ConsentCheckbox";
 import { useRecaptcha } from "@/hooks/useRecaptcha";
 import { absUrl } from "@/lib/routes";
 
@@ -30,10 +31,15 @@ export default function Hero({
   const emailRef = useRef<HTMLInputElement | null>(null);
   const messageRef = useRef<HTMLTextAreaElement | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [consent, setConsent] = useState(false);
   const { executeRecaptcha } = useRecaptcha();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!consent) {
+      alert("Palun nõustuge isikuandmete kaitse korraga, et vorm saata.");
+      return;
+    }
     setIsSubmitting(true);
 
     try {
@@ -114,7 +120,6 @@ export default function Hero({
             <ul className="mt-[14px] pt-[10px] grid max-w-lg grid-cols-1 gap-3 text-sm text-emerald-900/80">
               {[
                 "Kiire vastus",
-                "15+ aastat kogemust",
                 "Korrektne asjaajamine",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2">
@@ -246,7 +251,7 @@ export default function Hero({
                     name="phone"
                     autoComplete="tel"
                     className="h-11 w-full rounded-lg border border-slate-200 px-3 outline-none ring-emerald-300/40 focus:ring-4"
-                    placeholder="+372 5846 6110"
+                    placeholder="Sinu telefoninumber"
                   />
                 </Field>
 
@@ -270,12 +275,19 @@ export default function Hero({
                 autoComplete="off"
               />
 
+              <ConsentCheckbox
+                id={`${formId}-consent`}
+                checked={consent}
+                onChange={setConsent}
+                className="mt-4"
+              />
+
               <button
                 type="submit"
-                disabled={isSubmitting}
-                className={`mt-5 inline-flex w-full items-center justify-center rounded-lg px-4 py-3 font-semibold text-white transition ${
-                  isSubmitting 
-                    ? 'bg-gray-400 cursor-not-allowed' 
+                disabled={isSubmitting || !consent}
+                className={`mt-3 inline-flex w-full items-center justify-center rounded-lg px-4 py-3 font-semibold text-white transition ${
+                  isSubmitting || !consent
+                    ? 'bg-gray-400 cursor-not-allowed'
                     : 'bg-emerald-500 hover:bg-emerald-600'
                 }`}
               >

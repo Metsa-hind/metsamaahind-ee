@@ -16,7 +16,6 @@ export default function SeoRaieoiguseMuukSection() {
               <div className="mt-3 space-y-1 text-sm text-emerald-900/85">
                 <div>Hobujaama tn 4, Tallinn</div>
                 <div><a href="mailto:info@metsamaahind.ee" className="hover:underline">info@metsamaahind.ee</a></div>
-                <div><a href="tel:+37253412277" className="hover:underline">+372 5341 2277</a></div>
               </div>
               <Link
                 href={absUrl("/kontakt")}
@@ -51,7 +50,7 @@ export default function SeoRaieoiguseMuukSection() {
                   Kui teil on mets, mis on saanud või saamas raieküpseks, võite kaaluda raieõiguse müüki. See on lihtne ja mugav viis oma metsast tulu teenida, ilma et peaksite ise raiet korraldama, tehnikat rentima või keeruliste juriidiliste protsessidega tegelema.
                 </p>
                 <p>
-                  Meie ettevõte ostab raieõigust metsakinnistutele üle kogu Eesti ning pakub metsaomanikele läbipaistvat ja professionaalset teenust. Oleme metsanduses tegutsenud üle 15 aasta, tunneme turgu ja seadusandlust ning maksame alati turu kõrgeimat hinda.
+                  Meie ettevõte ostab raieõigust metsakinnistutele üle kogu Eesti ning pakub metsaomanikele läbipaistvat ja professionaalset teenust. Oleme metsanduses tegutsenud pikka aega, tunneme turgu ja seadusandlust ning maksame alati turu kõrgeimat hinda.
                 </p>
                 <p>
                   Müü oma raieõigus meile – tagame ausa hinnastamise, kiire protsessi ja korrektse raietöö. Meie eesmärk on, et teie jaoks oleks kogu raieõiguse müümise protsess murevaba ja kasumlik.
@@ -75,7 +74,7 @@ export default function SeoRaieoiguseMuukSection() {
                 <h4 className="mt-4 text-base font-semibold text-emerald-900">Meie tugevused, mis teevad raieõiguse müügi meiega lihtsaks:</h4>
                 <ul className="list-disc pl-5 space-y-2">
                   <li><strong>Kõrgeim ja aus turuhind</strong> – analüüsime puistut, selle ligipääsetavust, puuliike ja puiduturu olukorda, et pakkuda õiglast ja konkurentsivõimelist hinda.</li>
-                  <li><strong>Pikaajaline kogemus</strong> – üle 15 aasta metsanduses annab meile oskuse hinnata kinnistut realistlikult ja korraldada tööd seaduslikult ja säästvalt.</li>
+                  <li><strong>Pikaajaline kogemus</strong> – pikaajaline tegutsemine metsanduses annab meile oskuse hinnata kinnistut realistlikult ja korraldada tööd seaduslikult ja säästvalt.</li>
                   <li><strong>Täisteenus algusest lõpuni</strong> – aitame dokumentidega, vormistame metsateatise, planeerime ja viime läbi raietööd. Teie jaoks on kogu protsess lihtne ja murevaba.</li>
                   <li><strong>Kvaliteetne raietöö ja looduse hoidmine</strong> – viime raietööd läbi kaasaegse tehnikaga ning jätame metsamaa korras ja valmis uue metsa kasvuks.</li>
                   <li><strong>Selgus igas sammus</strong> – selgitame, kuidas hind kujuneb, millised on tähtajad ja mida igas etapis oodata.</li>

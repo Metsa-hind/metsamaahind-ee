@@ -16,7 +16,6 @@ export default function SeoRaieoiguseSection() {
               <div className="mt-3 space-y-1 text-sm text-emerald-900/85">
                 <div>Hobujaama tn 4, Tallinn</div>
                 <div><a href="mailto:info@metsamaahind.ee" className="hover:underline">info@metsamaahind.ee</a></div>
-                <div><a href="tel:+37253412277" className="hover:underline">+372 5341 2277</a></div>
               </div>
               <Link
                 href={absUrl("/kontakt")}
@@ -36,7 +35,7 @@ export default function SeoRaieoiguseSection() {
               </h2>
               <div className="mt-4 space-y-4 text-[15px] leading-7 text-emerald-900/90">
                 <p>
-                  Kui soovid oma metsast tulu teenida, ilma et peaksid ise raietöid korraldama või metsamajanduse keeruliste detailidega tegelema, on raieõiguse müük ja meie pakutav raieõiguse ost (ehk raieõiguse ostmine) lihtsaim ja turvalisim lahendus. Ostame raieõigust üle kogu Eesti – olenemata kinnistu suurusest või asukohast – ning maksame alati turu kõrgeimat hinda. Meil on üle 15 aasta kogemust metsanduses, investeerime pikaajalise strateegia alusel ja majandame metsi ise. See annab sulle kindluse, et saad oma metsamaterjali eest õiglase ja konkurentsivõimelise tasu ning et raie teostatakse professionaalselt.
+                  Kui soovid oma metsast tulu teenida, ilma et peaksid ise raietöid korraldama või metsamajanduse keeruliste detailidega tegelema, on raieõiguse müük ja meie pakutav raieõiguse ost (ehk raieõiguse ostmine) lihtsaim ja turvalisim lahendus. Ostame raieõigust üle kogu Eesti – olenemata kinnistu suurusest või asukohast – ning maksame alati turu kõrgeimat hinda. Meil on pikaajaline kogemus metsanduses, investeerime pikaajalise strateegia alusel ja majandame metsi ise. See annab sulle kindluse, et saad oma metsamaterjali eest õiglase ja konkurentsivõimelise tasu ning et raie teostatakse professionaalselt.
                 </p>
                 <p>
                   Meie eesmärk on teha kogu protsess müüjale võimalikult lihtsaks ja riskivabaks. Hoolitseme raietööde planeerimise, raiumise ja metsamaterjali väljaveo eest ning tagame, et raielank jääb pärast raiet korrektsesse seisukorda. Vajadusel pakume ka metsa uuendamise ja järelhoolduse lahendusi. Meie lähenemine põhineb läbipaistvusel ja professionaalsusel – selgitame iga sammu ning vastame selgelt kõikidele küsimustele.
@@ -45,7 +44,7 @@ export default function SeoRaieoiguseSection() {
                 <h3 className="mt-6 text-xl font-semibold text-emerald-900">Miks valida meie pakutav raieõiguse ostu teenus</h3>
                 <ul className="list-disc pl-5 space-y-2">
                   <li><strong>Kõrgeim turu hind</strong> – Maksame raieõiguse eest parimat võimalikku hinda, arvestades metsatagavara, liigikoosseisu, ligipääsu, sortimente, puidu kvaliteeti ja hetke puiduturu hindu.</li>
-                  <li><strong>Pikaajaline kogemus ja usaldusväärsus</strong> – Oleme metsanduses tegutsenud üle 15 aasta, tunneme kohalikke tingimusi ja seadusandlust ning järgime metsanduse head tava.</li>
+                  <li><strong>Pikaajaline kogemus ja usaldusväärsus</strong> – Oleme metsanduses tegutsenud pikka aega, tunneme kohalikke tingimusi ja seadusandlust ning järgime metsanduse head tava.</li>
                   <li><strong>Täisteenus alates hindamisest kuni raietööde lõpuni</strong> – Sa ei pea tegelema metsateatise, raiete korraldamise ega logistikaga – teeme kõik sinu eest.</li>
                   <li><strong>Läbipaistev hinnamudel</strong> – Selgitame täpselt, kuidas pakkumine kujuneb. Nii tead, mille eest ja kui palju saad tasu.</li>
                   <li><strong>Korrektne raietöö</strong> – Tagame, et raielank ja väljaveoteed on töö lõppedes heas korras ja valmis edasiseks metsauuenduseks.</li>

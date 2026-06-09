@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
-import { Building2, MapPin, Phone, Mail, Leaf, ShieldCheck, Timer, CheckCircle2, ChevronDown } from "lucide-react";
+import { Building2, MapPin, Mail, Leaf, ShieldCheck, Timer, CheckCircle2, ChevronDown } from "lucide-react";
 import { absUrl } from "@/lib/routes";
 
 export default function CompanyInfoSection() {
@@ -17,7 +17,6 @@ export default function CompanyInfoSection() {
       addressCountry: "EE",
     },
     email: "info@metsamaahind.ee",
-    telephone: "+372 5846 6110",
   };
   return (
     <section aria-labelledby="company-info" className="mt-[150px] pb-[60px]">
@@ -68,7 +67,7 @@ export default function CompanyInfoSection() {
                     <Leaf strokeWidth={1.5} className="h-5 w-5 text-emerald-700" aria-hidden />
                     <p className="text-[15px] font-medium text-emerald-950">Pikaajaline kogemus</p>
                   </div>
-                  <p className="mt-2 text-[13px] leading-6 text-emerald-900/85">Üle 15-aasta praktilist kogemust metsa ostu, hoolduse ja väärtuse tõstmise lahendustes.</p>
+                  <p className="mt-2 text-[13px] leading-6 text-emerald-900/85">Praktiline kogemus metsa ostu, hoolduse ja väärtuse tõstmise lahendustes.</p>
                 </div>
                 <div className="flex h-full flex-col justify-between rounded-xl border border-emerald-900/10 bg-white/80 bg-woodgrain p-4 shadow-sm">
                   <div className="flex items-center gap-2">
@@ -202,10 +201,6 @@ export default function CompanyInfoSection() {
                   <div className="mx-auto flex items-center gap-2">
                     <Mail strokeWidth={0.5} className="h-[18px] w-[18px] text-emerald-700" />
                     <a href="mailto:info@metsamaahind.ee" className="text-emerald-700 hover:underline">info@metsamaahind.ee</a>
-                  </div>
-                  <div className="mx-auto flex items-center gap-2">
-                    <Phone strokeWidth={0.5} className="h-[18px] w-[18px] text-emerald-700" />
-                    <a href="tel:+37251234567" className="text-emerald-700 hover:underline">+372 5846 6110</a>
                   </div>
                   <p className="mx-auto mt-1 text-[12px] text-gray-600">Metsa Hind OÜ</p>
                 </div>

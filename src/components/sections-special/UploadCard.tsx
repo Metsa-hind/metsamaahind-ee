@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import { UploadCloud, Folder, ChevronDown } from "lucide-react";
 import SmartBadge from "@/components/ui/SmartBadge";
+import ConsentCheckbox from "@/components/ui/ConsentCheckbox";
 import { useRecaptcha } from "@/hooks/useRecaptcha";
 
 // Standalone special section. Does not import any site primitives or site Container.
@@ -18,13 +19,19 @@ export default function UploadCard() {
   const [drag, setDrag] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [consent, setConsent] = useState(false);
   const { executeRecaptcha } = useRecaptcha();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+
     if (!fileName) {
       alert('Palun valige fail enne saatmist.');
+      return;
+    }
+
+    if (!consent) {
+      alert("Palun nõustuge isikuandmete kaitse korraga, et vorm saata.");
       return;
     }
 
@@ -188,12 +195,17 @@ export default function UploadCard() {
                   autoComplete="off"
                 />
                 </div>
+              <ConsentCheckbox
+                checked={consent}
+                onChange={setConsent}
+                className="mt-3"
+              />
               <button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={isSubmitting || !consent}
                 className={`mt-3 w-full rounded-[12px] px-4 py-2.5 text-[14px] font-semibold text-white transition-colors ${
-                  isSubmitting 
-                    ? 'bg-gray-400 cursor-not-allowed' 
+                  isSubmitting || !consent
+                    ? 'bg-gray-400 cursor-not-allowed'
                     : 'bg-emerald-500 hover:bg-emerald-600'
                 }`}
               >

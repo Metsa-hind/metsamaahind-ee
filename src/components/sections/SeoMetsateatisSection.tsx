@@ -16,7 +16,6 @@ export default function SeoMetsateatisSection() {
               <div className="mt-3 space-y-1 text-sm text-emerald-900/85">
                 <div>Hobujaama tn 4, Tallinn</div>
                 <div><a href="mailto:info@metsamaahind.ee" className="hover:underline">info@metsamaahind.ee</a></div>
-                <div><a href="tel:+37253412277" className="hover:underline">+372 5341 2277</a></div>
               </div>
               <Link
                 href={absUrl("/kontakt")}

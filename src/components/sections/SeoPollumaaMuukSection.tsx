@@ -16,7 +16,6 @@ export default function SeoPollumaaMuukSection() {
               <div className="mt-3 space-y-1 text-sm text-emerald-900/85">
                 <div>Hobujaama tn 4, Tallinn</div>
                 <div><a href="mailto:info@metsamaahind.ee" className="hover:underline">info@metsamaahind.ee</a></div>
-                <div><a href="tel:+37253412277" className="hover:underline">+372 5341 2277</a></div>
               </div>
               <Link
                 href={absUrl("/kontakt")}
@@ -47,7 +46,7 @@ export default function SeoPollumaaMuukSection() {
                   <li><strong>Kiire ja turvalise tehingu</strong> – me korraldame kogu asjaajamise ja suhtluse notariaalselt ning läbipaistvalt.</li>
                   <li><strong>Õiglase ja turupõhise hinna</strong> – hindame teie kinnistu individuaalselt, arvestades nii turu hetkeolukorda kui ka kinnistu eripära.</li>
                   <li><strong>Paindlikud lahendused</strong> – ostame ka kinnistuid, millel on rendilepingud või hüpoteegid, ning lahendame juriidilised nüansid.</li>
-                  <li><strong>Kogenud partneri</strong> – meil on rohkem kui 15 aastat kogemust põllu- ja metsakinnistute majandamisel.</li>
+                  <li><strong>Kogenud partneri</strong> – meil on pikaajaline kogemus põllu- ja metsakinnistute majandamisel.</li>
                 </ul>
 
                 <h3 className="mt-6 text-xl font-semibold text-emerald-900">Põllumaa müügi protsess samm-sammult</h3>
@@ -105,7 +104,7 @@ export default function SeoPollumaaMuukSection() {
                 <h3 className="mt-6 text-xl font-semibold text-emerald-900">Miks valida meid oma põllumaa müügipartneriks?</h3>
                 <ul className="list-disc pl-5 space-y-2">
                   <li><strong>Kõrgeim võimalik hind:</strong> maksame kuni 8000 €/ha, sõltuvalt kinnistu omadustest ja turuolukorrast.</li>
-                  <li><strong>Kogenud spetsialistid:</strong> üle 15 aasta kogemust põllu- ja metsamaade hindamises ning majandamises.</li>
+                  <li><strong>Kogenud spetsialistid:</strong> pikaajaline kogemus põllu- ja metsamaade hindamises ning majandamises.</li>
                   <li><strong>Lihtne ja kiire protsess:</strong> aitame alates hinnapäringust kuni notarini.</li>
                   <li><strong>Turvaline tehing:</strong> raha liigub ainult notarideposiidi kaudu.</li>
                   <li><strong>Paindlikkus:</strong> ostame ka keerulisema juriidilise staatusega kinnistuid.</li>
